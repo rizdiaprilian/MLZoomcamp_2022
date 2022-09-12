@@ -8,15 +8,16 @@ The instruction given to machine learning is specified to: learning from given a
 
 As an example, a machine learning is provided with the dataset of energy efficiency for building and is fitted to building parameters and their heating load and cooling load. This process is called “training”.
 
-[image]
+![image](https://user-images.githubusercontent.com/42743243/189708618-10dca868-ac86-4767-bb0c-95a084eb9b8a.png)
+
 
 After generating model from training, it is then used to predict how much load required for the newly given input parameters.
 
-[image]
+![image](https://user-images.githubusercontent.com/42743243/189708667-a0b96efe-ee53-4292-a93e-66b022c89d4f.png)
 
 Without machine learning, analysts and software developers would have to spent many hours to define a set of rules for converting the input data to the desired output. They explicitly encode these rules that satisfy input patterns in manual fashion and package it as a software. In contrast, machine learning automatically discovers input patterns and produces a model that recognizes them, hence saving much of time and effort from having to do tedious search and encode tasks.
 
-[image]
+![image](https://user-images.githubusercontent.com/42743243/189708729-1a639d71-3e81-439d-af72-461f8f5c727a.png)
 
 ### 1.1.1 Machine Learning vs Rule-Based Systems
 
