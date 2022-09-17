@@ -56,4 +56,34 @@ As machine learning may seem convincing as it sounds, it does not always the cas
 
 The absence of data renders machine learning to be out of affordable option.
 
+### 1.1.3 Supervised Machine Learning
+
+What have been described above is an example of supervised learning in which the model is provided with features and the target variable, and it is used to make an estimation based on informative values obtained from learned examples. In mathematical terms, the function to represent the relationship between features and the target can be written as
+
+[image]()
+where: 
+    - g is the function that maps inputs to the outputs
+    - X is the feature in matrix comprises of vectors in rows
+    - y is the target in vector
+
+The purpose of learning/fitting g to X is to acquire a model capable of producing outputs which relatively close to the vector y.  
+[image]()
+
+Common types of supervised learning:
+
+1) Regression
+2) Classification
+
+### 1.2 Machine Learning Process
+
+There has been a framework to provide guides and advices for many data science teams as to keep machine learning to be in line with business objectives: CRISP-DM. Rules on this standard are adaptive to the situation and condition, allows for iteratively updating their understanding on problem context, gaining more insights from the data and eventually retraining and evaluating the model before deploying the newer version of the model to the production environment.   
+
+[image]()
+
+
+
+
+
 (https://www.notion.so/Introduction-to-Machine-Learning-1931bbf7117a40769d60b8a0ecb0ff6b)
+
+
