@@ -1,6 +1,6 @@
 ## 7 Machine Learning Production with BentoML
 
-[image]()
+[image](images/BentoML_logo.png)
 
 ### 7.1 BentoML Introduction
 
@@ -30,6 +30,8 @@ What Bo covered are:
     - Observing what framework and modules and their version included inside bentoML packages with command `bentoml models get <service+tag>`.
     - Building a deployable bento as described in `bentofile.yaml` with command `bentoml build`.
     - Viewing the bento in tree file structures.
+    [image](images/bento_tree_view.png)
+
     - Building a docker image containing the bento that can be deployed to various kinds of environments with command `bentoml containerize <service+tag>`.
     - Starting the image with specified port with command `docker run -it --rm -p 3000:3000 <service+tag>` and test the service. 
 
