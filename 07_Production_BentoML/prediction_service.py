@@ -50,17 +50,22 @@ svc = bentoml.Service("credit_risk_classifier", runners=[model_runner])
 #     else:
 #         return {"status": "Approved"}
 
-@svc.api(input=JSON(pydantic_model=CreditApplication), output=JSON())
-async def classify(credit_application):
-    application_data = credit_application.dict()
+@svc.api(input=JSON(), output=JSON())
+async def classify(application_data):
     vector = dv.transform(application_data)
     prediction = await model_runner.predict.async_run(vector)
 
     result = prediction[0]
 
     if result > 0.5:
-        return {"status": "Declined"}
+        return {
+            "status": "Declined"
+            }
     elif result > 0.25:
-        return {"status": "Maybe"}
+        return {
+            "status": "Maybe"
+            }
     else:
-        return {"status": "Approved"}
+        return {
+            "status": "Approved"
+            }

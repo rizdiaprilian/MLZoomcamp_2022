@@ -11,11 +11,11 @@ response = requests.post(
 "marital": "married",
 "records": "no",
 "job": "freelance",
-"expenses": 150,
-"income": 210.0,
+"expenses": 1500,
+"income": 1450.0,
 "assets": 10000.0,
 "debt": 0.0,
-"amount": 5000,
+"amount": 1000,
 "price": 1400}""",
 ).text
 
