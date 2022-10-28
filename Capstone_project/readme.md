@@ -39,6 +39,7 @@ A notebook with a detailed description of the EDA and model selection is present
 - `EDA_model.ipynb`
 - `training.py`
 - `training_bentoml.py`
+- `prediction_flask.py`
 - `prediction_service.py`
 - `send_data.py`
 - `Dockerfile`
@@ -47,7 +48,28 @@ A notebook with a detailed description of the EDA and model selection is present
 
 
 
-#### Result and Analysis
+#### How to Run the Code
+
+Pipenv is used for package dependency and virtual environment management. The code has been run on a local notebook with Windows and executed with bash Linux.
+
+Please follow these steps to run the code.
+
+    1) Prepare `Pipenv` on a directory containing any file you wish to work with. Follow these steps if you have not installed it before.
+    2) Installing with command `pipenv install` will let the program to install modules you have included with.
+    3) After installation with pipenv completes, activate pipenv environemtn with `pipenv shell`.
+    4) Run `training.py` that generate prediction output ready for you to observe its predictive and generalization capability. Then, you can make a new collection of artifact of training results with command `python training_bentoml.py`.
+    5) You will see a list of model stored in BentoML. You will need to use this artifact for later use. 
+    6) Time to proceed to deployment of a trained model. Start flask app with command `waitress-serve --listen=0.0.0.0:9696 prediction_flask:app`, then open a new bash tab that lets you send a data with `python send_data.py`.
+    7) You can test if the modelling artifact can be reused for prediction with `bentoml serve prediction_service:svc`.
+    
+
+    For stopping the program in 6) and 7), hit buttons `CTRL + C` on your keyboard.
+
+After you're done, you may deactivate your pipenv environment with:
+
+    `exit`
+
+
 
 
 #### Deployment
