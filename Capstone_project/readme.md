@@ -4,29 +4,12 @@ A first project of MLZoomcamp. This repo is served with purpose of demonstration
 what we have learned until week 7.
 
 
-#### Dataset Description
+### Dataset Description
 
-*Original dataset* []
-
-This data was gathered from subjects/patients in 
+This project will take a focus on heart failure using a dataset collected from [Kaggle 2020](https://www.kaggle.com/datasets/andrewmvd/heart-failure-clinical-data) and compiled by Ahmad and colleagues (2017). The dataset holds the medical records of 299 patients aged between 40 and 95 years old accounted by 105 females and 194 males. This gathering was carried out at the Faisalabad Institute of Cardiology and at the Allied Hospital in Faisalabad, Pakistan between April and December 2015. 
 
 ### Attribute Information
 
-```
-* Age	Age of the patient	years	[40,…, 95]
-* Anaemia	Decrease of red blood cells (haemoglobin) 	binary	0, 1
-* Creatinine_phosphokinase	CPK level in the blood	mcg/L	[23, …, 7861]
-* Diabetes	Presence of diabetes	binary	0, 1
-* Ejection_fraction	Percentage of blood leaving the heart at each contraction	float	[14, …, 80]
-* High Blood Pressure	Presence of high blood pressure	binary	0, 1
-* Platelets	Platelets in the blood	Kiloplatelets/mL	[25.01, …, 850.00]
-* Serum_creatinine	Creatinine level in the blood	mg/dl	[0.50, …, 9.4]
-* Serum_sodium	Sodium level in the blood	mEq/L	[114, …, 148]
-* Sex	Male or female 	binary	0, 1
-* Smoking	Smoking or not smoking	binary	0, 1
-* Time	Follow-up period	days	[4, …, 285]
-* Death_event	Confirmed death during follow-up period	binary	0, 1
-```
 | Feature Name        | Explanation           | Measurement  |  Range  |
 | ------------- | ------------- |  ----- |  ----- | 
 | Age      | Age of the patient | years |  [40,…, 95]  |
@@ -45,10 +28,12 @@ This data was gathered from subjects/patients in
 
 
 
-### Relevant Paper
+#### Relevant Paper
+Chicco, D. and Jurman, G. (2020) ‘Machine learning can predict survival of patients with heart failure from serum creatinine and ejection fraction alone’, BMC Medical Informatics and Decision Making, 20(1), pp. 1-16. Available at: https://doi.org/10.1186/s12911-020-1023-5.
 
+Ahmad, T. et al. (2017) ‘Survival Analysis of Heart Failure Patients: A Case Study’, PLoS ONE, 12(7). Available at: https://doi.org/10.1371/journal.pone.0181001.
 
-#### Problem Context/Project Description
+### Problem Context/Project Description
 
 For this midterm project, a binary classification model is implemented on the case of heart failure with an aim of predicting patients' survival.
 
@@ -62,17 +47,18 @@ A notebook with a detailed description of the EDA and model selection is present
 
 #### Files
 
-- `readme.md`
-- `heart_failure.csv`
-- `EDA_model.ipynb`
-- `training.py`
-- `training_bentoml.py`
-- `prediction_flask.py`
-- `prediction_service.py`
-- `send_data.py`
-- `Dockerfile`
-- `Pipfile`
-- `bentoml.yaml`
+- `readme.md`: A full description of the project for reader to gain a greater picture of this project.
+- `heart_failure.csv`: The collection of heart failure records in CSV format.
+- `EDA_model.ipynb` : A jupyter notebook containing model building and parameter fine-tuning.
+- `heart_failure_profile.html`: A summary of exploratory data analysis on heart failure in web page. This was produced with `pandas_profiling`.
+- `training.py`: A python app that.
+- `training_bentoml.py`: A python app that.
+- `prediction_flask.py`: A Flask app that receives a query and outputs a prediction.
+- `prediction_service.py`: A service app that call a trained model from BentoML artifact to give a prediction to input data in flask service.
+- `send_data.py`: A python app that gives a request and delivers an input data to `prediction_service.py` to produce a prediction.
+- `Dockerfile`: A dockerfile for containerizing the Flask app.
+- `Pipfile`: A Pipfile for collection of libraries and modules dependencies.
+- `bentoml.yaml`: A structured file to produce/build a ML service container.
 
 
 
