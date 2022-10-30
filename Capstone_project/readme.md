@@ -28,7 +28,7 @@ This data was gathered from subjects/patients in
 * Death_event	Confirmed death during follow-up period	binary	0, 1
 ```
 | Feature Name        | Explanation           | Measurement  |  Range  |
-| ------------- |:-------------:|: -----:|  -----:| 
+| ------------- | ------------- |  ----- |  ----- | 
 | Age      | Age of the patient | years |  [40,…, 95]  |
 | Anaemia      | Decrease of red blood cells (haemoglobin) |  binary |  0, 1  |
 | Creatinine_phosphokinase | CPK level in the blood |   mcg/L | [23, …, 7861] |
