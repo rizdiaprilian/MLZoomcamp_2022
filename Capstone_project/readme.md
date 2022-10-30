@@ -13,10 +13,38 @@ This data was gathered from subjects/patients in
 ### Attribute Information
 
 ```
-
-
-
+* Age	Age of the patient	years	[40,…, 95]
+* Anaemia	Decrease of red blood cells (haemoglobin) 	binary	0, 1
+* Creatinine_phosphokinase	CPK level in the blood	mcg/L	[23, …, 7861]
+* Diabetes	Presence of diabetes	binary	0, 1
+* Ejection_fraction	Percentage of blood leaving the heart at each contraction	float	[14, …, 80]
+* High Blood Pressure	Presence of high blood pressure	binary	0, 1
+* Platelets	Platelets in the blood	Kiloplatelets/mL	[25.01, …, 850.00]
+* Serum_creatinine	Creatinine level in the blood	mg/dl	[0.50, …, 9.4]
+* Serum_sodium	Sodium level in the blood	mEq/L	[114, …, 148]
+* Sex	Male or female 	binary	0, 1
+* Smoking	Smoking or not smoking	binary	0, 1
+* Time	Follow-up period	days	[4, …, 285]
+* Death_event	Confirmed death during follow-up period	binary	0, 1
 ```
+| Feature Name        | Explanation           | Measurement  |  Range  |
+| ------------- |:-------------:|: -----:|  -----:| 
+| Age      | Age of the patient | years |  [40,…, 95]  |
+| Anaemia      | Decrease of red blood cells (haemoglobin) |  binary |  0, 1  |
+| Creatinine_phosphokinase | CPK level in the blood |   mcg/L | [23, …, 7861] |
+|  Diabetes	 | Presence of diabetes |	binary |	0, 1 |
+| Ejection_fraction | 	Percentage of blood leaving the heart at each contraction | 	float	| [14, …, 80] | 
+| High Blood Pressure | 	Presence of high blood pressure | 	binary	| 0, 1 | 
+| Platelets | 	Platelets in the blood | 	Kiloplatelets/mL	| [25.01, …, 850.00] | 
+| Serum_creatinine | 	Creatinine level in the blood | 	mg/dl	| [0.50, …, 9.4] | 
+| Serum_sodium |	Sodium level in the blood |	mEq/L |	[114, …, 148] |
+| Sex |	Male or female | 	binary |	0, 1 |
+| Smoking |	Smoking or not smoking |	binary |	0, 1 |
+| Time |	Follow-up period |	days |	[4, …, 285] |
+| Death_event |	Confirmed death during follow-up period |	binary |	0, 1 |
+
+
+
 ### Relevant Paper
 
 
