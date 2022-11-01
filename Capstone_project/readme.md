@@ -42,10 +42,7 @@ Models involved in learning and generalising the context are decision tree, rand
 A notebook with a detailed description of the EDA and model selection is presented in `EDA_model.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `training.py` and `training_bentoml.py`. A flask application served for responding to input data submitted from `send_data.py` is available in file `prediction_service.py`. The model registry is called from that flask for deployment (in waitress/gunicorn).
 
 
-#### Methodology
-
-
-#### Files
+### Files
 
 - `readme.md`: A full description of the project for reader to gain a greater picture of this project.
 - `heart_failure.csv`: The collection of heart failure records in CSV format.
@@ -82,6 +79,16 @@ Please follow these steps to run the code.
 After you're done, you may deactivate your pipenv environment with:
 
     `exit`
+
+#### EDA and Feature Importance
+
+Analysis on heart failure dataset highlights a few findings to learn: 
+
+    - All columns are completely free from missing values and type inconsistencies, thus ruling out requirements for filling and manipulation. 
+    - Columns that holds binary data are in state of integer types. We convert them to categorical types with pandas map function.  
+    - Visual graph sees non-gaussian (non-normal) distributions on features `creatinine_phosphokinase`, `platelets`, `serum_creatinine`, and `serum_sodium`. Since we use tree models in building predictive learning, transforming with np.log1p() or other functions is not necessary.
+    - Numerical relationship shows strong correlation on target `DEATH_EVENT` to features `creatine`, `age`, `ejection_fraction`, and `time`.
+    - Mutual information on categorical features shows an extremely weak relationship on target `DEATH_EVENT` to all categorical features.
 
 
 
