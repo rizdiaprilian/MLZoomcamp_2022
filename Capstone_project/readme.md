@@ -39,65 +39,49 @@ For this midterm project, a binary classification model is implemented on the ca
 
 Models involved in learning and generalising the context are decision tree, random forest and XGBoost. XGBoost/random forest performed at the best on picking deceased patients from heart failure (precision)/ recognising deceased patients from all of retrieved records paired with true label of deceased (recall) while decision tree achieved a superiority in acquiring survived patients (NPV). 
 
-A notebook with a detailed description of the EDA and model selection is presented in `EDA_model.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `training.py` and `training_bentoml.py`. A flask application served for responding to input data submitted from `send_data.py` is available in file `prediction_service.py`. The model registry is called from that flask for deployment (in waitress/gunicorn).
+A notebook with a detailed description of the Exploratory Data Analysis (EDA), and model building and tuning is presented in `project.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `train.py`. A flask application served for responding to input data submitted from `send_data.py` is available in file `prediction_service.py`. The model registry is called from that flask for deployment (in waitress/gunicorn).
 
 
 ### Files
 
 - `readme.md`: A full description of the project for reader to gain a greater picture of this project.
-- `heart_failure.csv`: The collection of heart failure records in CSV format.
-- `EDA_model.ipynb` : A jupyter notebook containing model building and parameter fine-tuning.
+- `heart_failure_clinical_records_dataset.csv`: The collection of heart failure records in CSV format.
+- `project.ipynb` : A jupyter notebook containing model building and parameter fine-tuning. This file also build ML packages in bentoml.
 - `heart_failure_profile.html`: A summary of exploratory data analysis on heart failure in web page. This was produced with `pandas_profiling`.
-- `training.py`: A python app that.
-- `training_bentoml.py`: A python app that.
-- `prediction_flask.py`: A Flask app that receives a query and outputs a prediction.
-- `prediction_service.py`: A service app that call a trained model from BentoML artifact to give a prediction to input data in flask service.
-- `send_data.py`: A python app that gives a request and delivers an input data to `prediction_service.py` to produce a prediction.
-- `Dockerfile`: A dockerfile for containerizing the Flask app.
+- `training.py`: A python app that build a bentoml registry.
+- `prediction_service_sklearn.py`: A service app in sklearn that call a trained model from BentoML artifact to give a prediction to input data in flask service.
+- `prediction_service_xgboost.py`: A service app in xgboost that call a trained model from BentoML artifact to give a prediction to input data in flask service.
+- `send_data.py`: A python app that gives a request and delivers an input data to a service app to produce a prediction.
 - `Pipfile`: A Pipfile for collection of libraries and modules dependencies.
 - `bentoml.yaml`: A structured file to produce/build a ML service container.
-
-
-
-#### How to Run the Code
-
-Pipenv is used for package dependency and virtual environment management. The code has been run on a local notebook with Windows and executed with bash Linux.
-
-Please follow these steps to run the code.
-
-    1) Prepare `Pipenv` on a directory containing any file you wish to work with. Follow these steps if you have not installed it before.
-    2) Installing with command `pipenv install` will let the program to install modules you have included with.
-    3) After installation with pipenv completes, activate pipenv environemtn with `pipenv shell`.
-    4) Run `training.py` that generate prediction output ready for you to observe its predictive and generalization capability. Then, you can make a new collection of artifact of training results with command `python training_bentoml.py`.
-    5) You will see a list of model stored in BentoML. You will need to use this artifact for later use. 
-    6) Time to proceed to deployment of a trained model. Start flask app with command `waitress-serve --listen=0.0.0.0:9696 prediction_flask:app`, then open a new bash tab that lets you send a data with `python send_data.py`.
-    7) You can test if the modelling artifact can be reused for prediction with `bentoml serve prediction_service:svc`.
-    
-
-    For stopping the program in 6) and 7), hit buttons `CTRL + C` on your keyboard.
-
-After you're done, you may deactivate your pipenv environment with:
-
-    `exit`
 
 #### EDA and Feature Importance
 
 Analysis on heart failure dataset highlights a few findings to learn: 
 
-    - All columns are completely free from missing values and type inconsistencies, thus ruling out requirements for filling and manipulation. 
+    - All columns are completely free from missing values and type inconsistencies, thus ruling out requirements for data filling. 
     - Columns that holds binary data are in state of integer types. We convert them to categorical types with pandas map function.  
     - Visual graph sees non-gaussian (non-normal) distributions on features `creatinine_phosphokinase`, `platelets`, `serum_creatinine`, and `serum_sodium`. Since we use tree models in building predictive learning, transforming with np.log1p() or other functions is not necessary.
     - Numerical relationship shows strong correlation on target `DEATH_EVENT` to features `creatine`, `age`, `ejection_fraction`, and `time`.
     - Mutual information on categorical features shows an extremely weak relationship on target `DEATH_EVENT` to all categorical features.
 
+#### How to Run the Code
 
+    1) Prepare a file named `Pipfile` on a directory where projects locates. `Pipfile` gathers collection of modules which are utilized for development and production. 
+    2) After gathering modules in `Pipfile`, install pipenv with command `pipenv install`. You can also install other modules if any update of requirements comes by (for example, `pipenv install xgboost` if we decide to include xgboost for adding another predictive modelling). 
+    3) Activate pipenv environment with command `pipenv shell` following the completion of pipenv installation. At this point, we are ready to do a few tasks.
+    4) Conduct data exploration and preprocessing before proceeding to model fitting with tree-based learning. Then, we tune parameters of three models that produce the best possible prediction on test set. Lastly, bentoml packages will be produced after execution finishes. These are extensively done in `project.ipynb`. 
+    5) You will see a list of model stored in BentoML with `bentoml models list`.  
+    6) Time to proceed to deployment of a trained model. Start a prediction service with command `bentoml serve prediction_service:svc`, then open a new bash tab that lets you send a data with `python send_data.py`. A response will appear a few seconds later. 
+    7) Build bentoml docker package as specified in 'bentofile.yaml' with command `bentoml build`.
+    8) Generate a docker container with `bentoml dockerize <service name:tag>` and it is ready to be deployed for production.
 
+#### Performing under multiple requests in parallel
 
-#### Deployment
+    1) Do the same as mentioned in previous section but with a little change: we will make multiple calls by running `locustfile.py`. Since this project is developed in Windows, so after executing `locust -H http://localhost:3000`, locust UI would appear in `http://localhost:8089`.
+    2) Set number of users and spawn rate. Start with 100 and 10, respectively. Observe how the prediction service fare against concurrent requests: it would be great if responses run well without fails.  
+    3) Reports are available to read in `Locust_async_reports` directory.
 
-##### Docker and Flask
-
-##### BentoML
 
 
 This structure takes an inspiration from 

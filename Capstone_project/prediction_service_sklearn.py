@@ -17,7 +17,7 @@ class PatientInput(BaseModel):
     time: int
 
     
-model_ref = bentoml.sklearn.get("heart_failure_model_random_forest:jdzn3pcz3ouwy7fs")
+model_ref = bentoml.sklearn.get("heart_failure_model_random_forest:latest")
 dv = model_ref.custom_objects['dictVectorizer']
 
 model_runner = model_ref.to_runner()
@@ -26,7 +26,7 @@ model_runner = model_ref.to_runner()
 svc = bentoml.Service("heart_failure_classifier", runners=[model_runner])
 
 @svc.api(input=JSON(pydantic_model=PatientInput), output=JSON())
-def classify(input_patient):
+async def classify(input_patient):
     """
     Placing prediction service on API point that functions as a receiver
     to JSON input and returns a prediction output.
@@ -34,7 +34,7 @@ def classify(input_patient):
     """
     application_data = input_patient.dict()
     vector = dv.transform(application_data)
-    prediction = model_runner.run(vector)
+    prediction = await model_runner.async_run(vector)
 
     result = prediction[0]  # returns list of predict_proba values
 

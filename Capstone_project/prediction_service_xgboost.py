@@ -26,7 +26,7 @@ model_runner = model_ref.to_runner()
 svc = bentoml.Service("heart_failure_classifier", runners=[model_runner])
 
 @svc.api(input=JSON(pydantic_model=PatientInput), output=JSON())
-def classify(input_patient):
+async def classify(input_patient):
     """
     Placing prediction service on API point that functions as a receiver
     to JSON input and returns a prediction output.
@@ -34,7 +34,7 @@ def classify(input_patient):
     """
     application_data = input_patient.dict()
     vector = dv.transform(application_data)
-    prediction = model_runner.predict.run(vector)
+    prediction = await model_runner.predict.async_run(vector)
 
     result = prediction[0]  
 

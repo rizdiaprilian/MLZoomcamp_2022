@@ -13,6 +13,9 @@ jupyter = "*"
 pywin32 = "*"
 xgboost = "*"
 hyperopt = "*"
+pandas = "*"
+seaborn = "*"
+bentoml = "*"
 
 [dev-packages]
 requests = "*"
