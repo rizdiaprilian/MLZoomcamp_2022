@@ -1,6 +1,6 @@
 import bentoml
 from bentoml.io import JSON
-from pydantic import BaseModel, ValidationError, validator
+from pydantic import BaseModel
 
 class PatientInput(BaseModel):
     age: float
@@ -17,7 +17,7 @@ class PatientInput(BaseModel):
     time: int
 
     
-model_ref = bentoml.xgboost.get("heart_failure_model:tm7remcz46j4e7fs")
+model_ref = bentoml.xgboost.get("heart_failure_xgboost:latest")
 dv = model_ref.custom_objects['dictVectorizer']
 
 model_runner = model_ref.to_runner()

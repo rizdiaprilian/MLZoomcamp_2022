@@ -1,6 +1,6 @@
 import bentoml
 from bentoml.io import JSON
-from pydantic import BaseModel, ValidationError, validator
+from pydantic import BaseModel
 
 class PatientInput(BaseModel):
     age: float
@@ -16,8 +16,8 @@ class PatientInput(BaseModel):
     smoking: str
     time: int
 
-    
-model_ref = bentoml.sklearn.get("heart_failure_model_random_forest:latest")
+# Switch between "decision_tree" and "random_forest"
+model_ref = bentoml.sklearn.get("heart_failure_random_forest:latest")
 dv = model_ref.custom_objects['dictVectorizer']
 
 model_runner = model_ref.to_runner()
