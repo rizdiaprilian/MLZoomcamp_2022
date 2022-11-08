@@ -58,19 +58,20 @@ A notebook with a detailed description of the Exploratory Data Analysis (EDA), a
 ## 2) EDA, Feature Correlation, Feature Importance
 
 A few findings to learn: 
-*EDA*
-    - All columns are completely free from missing values and type inconsistencies, thus ruling out requirements for data filling. 
-    - Columns that holds binary data are in the state of integer types. We convert them to boolean/categorical types with pandas map function.
-    - Visual graph sees non-gaussian (non-normal) distributions on features `creatinine_phosphokinase`, `platelets`, `serum_creatinine`, and `serum_sodium`. Since we use tree models in building predictive learning, transforming with `np.log1p()` or other functions is not necessary.
-*Group Risk Factor by Mean*
-    - Patients suffering `anaemia` tend to have higher risk than those who do not: the risk of mortality is 1.11 for anameia group against 0.916 for all patient not being treated as to having anaemia.
-    - Risk is higher for everyone that suffered from `high_blood_pressure`, in which its marginal proportion is 1.15. Meanwhile, people whose free from this ailment have lower risk (0.916).
-    - Risk differences due to `smoking` and `diabetes` are considerably lower than the group which are not subjected to these conditions.
-*Mutual Information*
-    - Mutual information shows a similar result on feature imporatance: `anaemia` and `high_blood_pressure` are among categorical features that affect the risk of death. 
-    - Mutual information on categorical features shows an extremely weak relationship on target `DEATH_EVENT` to all categorical features.
-*Feature Correlation*  
-    - A considerably high relationship on `DEATH_EVENT` with features `age`, `ejection_fraction`, `serum_creatinine`, and `time`.
+
+**EDA**
+- All columns are completely free from missing values and type inconsistencies, thus ruling out requirements for data filling. 
+- Columns that holds binary data are in the state of integer types. We convert them to boolean/categorical types with pandas map function.
+- Visual graph sees non-gaussian (non-normal) distributions on features `creatinine_phosphokinase`, `platelets`, `serum_creatinine`, and `serum_sodium`. Since we use tree models in building predictive learning, transforming with `np.log1p()` or other functions is not necessary.
+**Group Risk Factor by Mean**
+- Patients suffering `anaemia` tend to have higher risk than those who do not: the risk of mortality is 1.11 for anameia group against 0.916 for all patient not being treated as to having anaemia.
+- Risk is higher for everyone that suffered from `high_blood_pressure`, in which its marginal proportion is 1.15. Meanwhile, people whose free from this ailment have lower risk (0.916).
+- Risk differences due to `smoking` and `diabetes` are considerably lower than the group which are not subjected to these conditions.
+**Mutual Information**
+- Mutual information shows a similar result on feature imporatance: `anaemia` and `high_blood_pressure` are among categorical features that affect the risk of death. 
+- Mutual information on categorical features shows an extremely weak relationship on target `DEATH_EVENT` to all categorical features.
+**Feature Correlation**  
+- A considerably high relationship on `DEATH_EVENT` with features `age`, `ejection_fraction`, `serum_creatinine`, and `time`.
     
 
 ## 3) Running the Code 
