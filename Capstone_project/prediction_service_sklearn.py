@@ -17,7 +17,7 @@ class PatientInput(BaseModel):
     time: int
 
 # Switch between "decision_tree" and "random_forest"
-model_ref = bentoml.sklearn.get("heart_failure_random_forest:latest")
+model_ref = bentoml.sklearn.get("heart_failure_decision_tree:latest")
 dv = model_ref.custom_objects['dictVectorizer']
 
 model_runner = model_ref.to_runner()

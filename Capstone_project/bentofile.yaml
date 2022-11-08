@@ -8,6 +8,6 @@ include:
 python:
     packages:  # Additional pip packages required by the service
     - pandas
-    - xgboost
+    - scikit-learn
     - pydantic
-    - sklearn
+    - xgboost
