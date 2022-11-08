@@ -1,7 +1,6 @@
-### Capstone Project 
+## Capstone Project 
 
-A first project of MLZoomcamp. This repo is served with purpose of demonstration how far we fully utilise  
-what we have learned until week 7.
+A first project of MLZoomcamp. This repo is served with purpose of demonstration how far we utilise what we have learned until week 7.
 
 
 ### Dataset Description
@@ -33,6 +32,7 @@ Chicco, D. and Jurman, G. (2020) ‘Machine learning can predict survival of pat
 
 Ahmad, T. et al. (2017) ‘Survival Analysis of Heart Failure Patients: A Case Study’, PLoS ONE, 12(7). Available at: https://doi.org/10.1371/journal.pone.0181001.
 
+## 1) Description
 ### Problem Context/Project Description
 
 For this midterm project, a binary classification model is implemented on the case of heart failure with an aim of predicting patients' survival.
@@ -55,26 +55,66 @@ A notebook with a detailed description of the Exploratory Data Analysis (EDA), a
 - `Pipfile`: A Pipfile for collection of libraries and modules dependencies.
 - `bentoml.yaml`: A structured file to produce/build a ML service container.
 
-#### EDA and Feature Importance
+## 2) EDA, Feature Correlation, Feature Importance
 
-Analysis on heart failure dataset highlights a few findings to learn: 
-
+A few findings to learn: 
+*EDA*
     - All columns are completely free from missing values and type inconsistencies, thus ruling out requirements for data filling. 
-    - Columns that holds binary data are in state of integer types. We convert them to categorical types with pandas map function.  
-    - Visual graph sees non-gaussian (non-normal) distributions on features `creatinine_phosphokinase`, `platelets`, `serum_creatinine`, and `serum_sodium`. Since we use tree models in building predictive learning, transforming with np.log1p() or other functions is not necessary.
-    - Numerical relationship shows strong correlation on target `DEATH_EVENT` to features `creatine`, `age`, `ejection_fraction`, and `time`.
+    - Columns that holds binary data are in the state of integer types. We convert them to boolean/categorical types with pandas map function.
+    - Visual graph sees non-gaussian (non-normal) distributions on features `creatinine_phosphokinase`, `platelets`, `serum_creatinine`, and `serum_sodium`. Since we use tree models in building predictive learning, transforming with `np.log1p()` or other functions is not necessary.
+*Group Risk Factor by Mean*
+    - Patients suffering `anaemia` tend to have higher risk than those who do not: the risk of mortality is 1.11 for anameia group against 0.916 for all patient not being treated as to having anaemia.
+    - Risk is higher for everyone that suffered from `high_blood_pressure`, in which its marginal proportion is 1.15. Meanwhile, people whose free from this ailment have lower risk (0.916).
+    - Risk differences due to `smoking` and `diabetes` are considerably lower than the group which are not subjected to these conditions.
+*Mutual Information*
+    - Mutual information shows a similar result on feature imporatance: `anaemia` and `high_blood_pressure` are among categorical features that affect the risk of death. 
     - Mutual information on categorical features shows an extremely weak relationship on target `DEATH_EVENT` to all categorical features.
+*Feature Correlation*  
+    - A considerably high relationship on `DEATH_EVENT` with features `age`, `ejection_fraction`, `serum_creatinine`, and `time`.
+    
 
-#### How to Run the Code
+## 3) Running the Code 
 
+### Model Building and Fine-Tuning
     1) Prepare a file named `Pipfile` on a directory where projects locates. `Pipfile` gathers collection of modules which are utilized for development and production. 
     2) After gathering modules in `Pipfile`, install pipenv with command `pipenv install`. You can also install other modules if any update of requirements comes by (for example, `pipenv install xgboost` if we decide to include xgboost for adding another predictive modelling). 
     3) Activate pipenv environment with command `pipenv shell` following the completion of pipenv installation. At this point, we are ready to do a few tasks.
-    4) Conduct data exploration and preprocessing before proceeding to model fitting with tree-based learning. Then, we tune parameters of three models that produce the best possible prediction on test set. Lastly, bentoml packages will be produced after execution finishes. These are extensively done in `project.ipynb`. 
-    5) You will see a list of model stored in BentoML with `bentoml models list`.  
-    6) Time to proceed to deployment of a trained model. Start a prediction service with command `bentoml serve prediction_service:svc`, then open a new bash tab that lets you send a data with `python send_data.py`. A response will appear a few seconds later. 
-    7) Build bentoml docker package as specified in 'bentofile.yaml' with command `bentoml build`.
-    8) Generate a docker container with `bentoml dockerize <service name:tag>` and it is ready to be deployed for production.
+    4) Conduct data exploration and preprocessing before proceeding to model fitting with tree-based learning. Then, we build machine learning models followed by parameter tuning for three models that produce the best possible prediction on the test set. These are extensively done in `project.ipynb`. 
+
+### Running Model Training and Results on the Test set
+
+Run file `train.py` with additional arguments listed below:
+
+    - `python train.py "Decision Tree" "sklearn"`
+    - `python train.py "Random Forest" "sklearn"`
+    - `python train.py "XGBoost" "xgboost"`
+
+You will see a list of models are already stored in BentoML with `bentoml models list`. 
+
+![image](screenshots/bentoml_models_list.png)
+
+Model prediction results:
+
+| Model       | ROC AUC           |
+| ------------- | ------------- |  
+| Decision Tree Classifier      | 0.801 |    
+| Random Forest Classifier      | 0.867 | 
+| XGBoost Tree-based | 0.889 |  
+
+### Testing BentoML
+
+Start a prediction service with command `bentoml serve prediction_service_sklearn:svc` or `bentoml serve prediction_service_xgboost:svc`, then open a new bash tab that lets you send a data with `python send_data.py`. A response will appear a few seconds later. 
+
+### Containerizing bentoml package into Docker Image
+
+Specify lists of libraries and include a prediction service python script in file `bentofile.yaml`. Command `bentoml build` in a directory storing `bentofile.yaml` and `train.py` will allow a bentoml package to be generated.
+
+![image](screenshots/ubuntu_ls.png)
+
+![image](screenshots/bentoml_list.png)
+
+Generate a docker container with `bentoml dockerize heart_failure_classifier:<tag>`. Then, run the container in local machine with `docker run -it --rm -p 3000:3000 <heart_failure_classifier:<tag>` and send a data by executing `python send_data.py` to see whether the container is successful in responding to its json input request.
+
 
 #### Performing under multiple requests in parallel
 
