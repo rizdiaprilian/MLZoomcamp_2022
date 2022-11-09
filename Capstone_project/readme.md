@@ -155,7 +155,7 @@ This time, I use my existing remote host from Google Cloud. What I have to do:
 
 ![image](screenshots/gcloud_auth_login1.png)
 
-Then, copy that long code and swith window from remote host to local machine and paste it on bash terminal. A web browser will automatically start to load the page you need to enter your username and password. If this succeeds, the second response is given as shown below:
+Then, copy that long code and switch window from remote host to local machine and paste it on bash terminal. A web browser will automatically start to load the page you need to enter your username and password. If this succeeds, the second response is given as shown below:
 
 ![image](screenshots/gcloud_auth_login2.png)
 
