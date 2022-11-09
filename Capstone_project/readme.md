@@ -37,7 +37,7 @@ Ahmad, T. et al. (2017) ‘Survival Analysis of Heart Failure Patients: A Case S
 
 For this midterm project, a binary classification model is implemented on the case of heart failure with an aim of predicting patients' survival.
 
-Models involved in learning and generalising the context are decision tree, random forest and XGBoost. XGBoost/random forest performed at the best on picking deceased patients from heart failure (precision)/ recognising deceased patients from all of retrieved records paired with true label of deceased (recall) while decision tree achieved a superiority in acquiring survived patients (NPV). 
+Models involved in learning and generalising the context are decision tree, random forest and XGBoost. 
 
 A notebook with a detailed description of the Exploratory Data Analysis (EDA), and model building and tuning is presented in `project.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `train.py`. A flask application served for responding to input data submitted from `send_data.py` is available in file `prediction_service.py`. The model registry is called from that flask for deployment (in waitress/gunicorn).
 
