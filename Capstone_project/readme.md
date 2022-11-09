@@ -122,18 +122,24 @@ Generate a docker container with `bentoml dockerize heart_failure_classifier:<ta
 
 #### Performing under multiple requests in parallel
 
-    1) Do the same as mentioned in previous section but with a little change: we will make multiple calls by running `locustfile.py`. Since this project is developed in Windows, so after executing `locust -H http://localhost:3000`, locust UI would appear in `http://localhost:8089`.
-    2) Set number of users and spawn rate. Start with 100 and 10, respectively. Observe how the prediction service fare against concurrent requests: it would be great if responses run well without fails.  
-    3) Reports are available to read in `Locust_async_reports` directory.
+1) Do the same as mentioned in previous section but with a little change: we will make multiple calls by running `locustfile.py`. Since this project is developed in Windows, so after executing `locust -H http://localhost:3000`, locust UI would appear in `http://localhost:8089`.
+2) Set number of users and spawn rate. Start with 100 and 10, respectively. Observe how the prediction service fare against concurrent requests: it would be great if responses run well without fails.  
+3) Reports are available to read in `Locust_async_reports` directory.
+
+## Storing Docker Images to Docker Hub
+
+Register in docker hub, then make a repository. 
+
+`docker push `
 
 ## 5) Deploy to Google Cloud
 
 This time, I use my existing remote host from Google Cloud. What I have to do:
 
-    1) Starting Compute Engine and preparation:
-        - Update python in anaconda to 3.9.12
-        - Create a new directory `mlzoomcamp` just to work with pipenv environment.
-        - Authenticate gcloud with `gcloud auth login`. Just continue to authenticate with your personal account by pressing `Y`. As its first response you may see like this:
+1) Starting Compute Engine and preparation:
+    - Update python in anaconda to 3.9.12
+    - Create a new directory `mlzoomcamp` just to work with pipenv environment.
+    - Authenticate gcloud with `gcloud auth login`. Just continue to authenticate with your personal account by pressing `Y`. As its first response you may see like this:
 
 ![image](screenshots/gcloud_auth_login1.png)
 
@@ -143,32 +149,32 @@ Then, copy that long code and swith window from remote host to local machine and
 
 Copy that response code and back to the remote host, then paste it. After your credential is accepted, you just only need to choose your project ID (if any) and begin your work.
 
-    2) Configure container registry (https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-helper):
-        - Configure Docker (if Docker has been installed) with `gcloud auth configure-docker`. A credential is saved in your user home directory
+2) Configure container registry (https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-helper):
+    - Configure Docker (if Docker has been installed) with `gcloud auth configure-docker`. A credential is saved in your user home directory
 
-    3) Download a docker image from my docker hub. Retrieve an image by running `docker pull 21492rar/heart_failure_machine_learning:g4ls2g266cfa27fs`.
+3) Download a docker image from my docker hub. Retrieve an image by running `docker pull 21492rar/heart_failure_machine_learning:g4ls2g266cfa27fs`.
 
-    4) Push a downloaded image to container registry in two steps:
-        - `docker tag <IMAGE ID> <HOST NAME>/<PROJECT_ID>/<TARGET_IMAGE>:<TAG>`
-        - `docker push <HOST NAME>/<PROJECT_ID>/<TARGET_IMAGE>:<TAG>`
+4) Push a downloaded image to container registry in two steps:
+    - `docker tag <IMAGE ID> <HOST NAME>/<PROJECT_ID>/<TARGET_IMAGE>:<TAG>`
+    - `docker push <HOST NAME>/<PROJECT_ID>/<TARGET_IMAGE>:<TAG>`
 
 ![image](screenshots/container_registry.png)
 
 ![image](screenshots/container_registry2.png)
 
-    5) Deployment with Google Cloud Run (https://cloud.google.com/sdk/gcloud/reference/run/deploy):
-        - Deploy the image stored in container registry with command `gcloud container images list-tags eu.gcr.io/data-eng-camp-apr22/heart_failure_service`
+5) Deployment with Google Cloud Run (https://cloud.google.com/sdk/gcloud/reference/run/deploy):
+    - Deploy the image stored in container registry with command `gcloud run deploy ml-serve --image=eu.gcr.io/data-eng-camp-apr22/heart_failure_service@sha256:be6bcf45bed2616a69be9a59112272ef277d70aa69229dfc4661bb4423067b12 --region=europe-west2 --port=3000`
 
 ![image](screenshots/copy_image_detail.png)
 
-        - When it is successful, an unique url will appear. Copy the url to the browser of your choice.
+    - When it is successful, an unique url will appear. Copy the url to the browser of your choice.
 
 ![image](screenshots/deploy_success.png)
 
 ![image](screenshots/deploy_success2.png)
 
-        - You are ready to try input the data and test its predictive ability.
-        
+    - You are ready to try input the data and test its predictive ability.
+
 ![image](screenshots/test_deploy_cloud.png)
 
 This structure takes an inspiration from 
