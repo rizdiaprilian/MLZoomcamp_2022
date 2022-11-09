@@ -142,6 +142,8 @@ Then, execute command `docker push 21492rar/heart_failure_machine_learning:<Tag>
 
 ![image](screenshots/docker_hub.png)
 
+My docker hub repository: https://hub.docker.com/r/21492rar/heart_failure_machine_learning/tags
+
 ## 5) Deploy to Google Cloud
 
 This time, I use my existing remote host from Google Cloud. What I have to do:
@@ -185,7 +187,7 @@ Copy that response code and back to the remote host, then paste it. After your c
 
     - You are ready to try input the data and test its predictive ability. JSON input which is written to the request body should be as shown in an example below:
 
-    ```
+```
 {
     "age": 41.0,
     "anaemia": "no",
@@ -200,7 +202,7 @@ Copy that response code and back to the remote host, then paste it. After your c
     "smoking": "no",
     "time": 23
 }
-    ```
+```
 
 ![image](screenshots/test_deploy_cloud.png)
 
