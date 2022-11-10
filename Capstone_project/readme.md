@@ -2,6 +2,15 @@
 
 A first project of MLZoomcamp. This repo is served with purpose of demonstration how far we utilise what we have learned until week 7.
 
+## 1) Introduction
+### Problem Context
+
+This midterm project covers the application of machine learning in the case of heart failure and how existing studies elaborate the assessment of machine learning prediction to patients’ survival from cardiovascular morbid. Chicco and Jurman (2020) proposed supervised learning techniques for predicting patient survival suffered from heart failure: logistic regression, random forest, xgboost, decision tree, support vector machine, artificial neural network, k-nearest neighbors, gradient boosting, and naïve bayes. Further analysis on medical features using statistical tests such as Mann-Whitney, Pearson, and Chi-square demonstrated the most significant features contributing to patient survival: Serum creatinine and ejection fraction. 
+
+Heart failure is a common part of heart disorders along with coronary heart disease, cerebrovascular disease, atrial fibrillation, cardiac arrest, and other pathology types. A person who suffers from heart failure could experience the enlargement of heart muscles that reduces flexibility required for blood pumping, causing the failure in fulfilling the balance of blood supply and demand (Ahmad et al., 2017). 
+
+To achieve the objective of this project, models are selected to learn medical conditions and build generalization and prediction capability based upon those features: decision tree, random forest and XGBoost. A Metric used to assess prediction capabilities is ROC-AUC.
+
 
 ### Dataset Description
 
@@ -26,28 +35,20 @@ This project will take a focus on heart failure using a dataset collected from [
 | Death_event |	Confirmed death during follow-up period |	binary |	0, 1 |
 
 
-
 #### Relevant Paper
 Chicco, D. and Jurman, G. (2020) ‘Machine learning can predict survival of patients with heart failure from serum creatinine and ejection fraction alone’, BMC Medical Informatics and Decision Making, 20(1), pp. 1-16. Available at: https://doi.org/10.1186/s12911-020-1023-5.
 
 Ahmad, T. et al. (2017) ‘Survival Analysis of Heart Failure Patients: A Case Study’, PLoS ONE, 12(7). Available at: https://doi.org/10.1371/journal.pone.0181001.
 
-## 1) Description
-### Problem Context/Project Description
-
-For this midterm project, a binary classification model is implemented on the case of heart failure with an aim of predicting patients' survival.
-
-Models involved in learning and generalising the context are decision tree, random forest and XGBoost. A Metric used to assess prediction capabilities is ROC-AUC.
+### Project Description
 
 A notebook with a detailed description of the Exploratory Data Analysis (EDA), and model building and tuning is presented in `project.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `train.py`. A prediction service composed of runners and APIs is served for responding to input data submitted from `send_data.py`: it is available in file `prediction_service_sklearn.py` and `prediction_service_xgboost.py`. An object service object is provided with a decorator method `svc.api` for defining API. A saved model in bentoml lists is retrieved for runner instances (in waitress/gunicorn).
-
 
 ### Files
 
 - `readme.md`: A full description of the project for reader to gain a greater picture of this project.
 - `heart_failure_clinical_records_dataset.csv`: The collection of heart failure records in CSV format.
 - `project.ipynb` : A jupyter notebook containing model building and parameter fine-tuning. This file also build ML packages in bentoml.
-- `heart_failure_profile.html`: A summary of exploratory data analysis on heart failure in web page. This was produced with `pandas_profiling`.
 - `train.py`: A python app that build a bentoml registry.
 - `prediction_service_sklearn.py`: A service app in sklearn that call a trained model from BentoML artifact to give a prediction to input data in flask service.
 - `prediction_service_xgboost.py`: A service app in xgboost that call a trained model from BentoML artifact to give a prediction to input data in flask service.
@@ -91,14 +92,14 @@ A few findings to learn:
 
 ## Preparing Enviroments
 
-1) Create a conda environment with command `conda create --name <env_name> --file requirements.txt`.
+1) Create a conda environment with command `conda create --name <env_name> --file requirements.txt`. `env_name` used here is `env_python38`.
 2) Prepare a file named `Pipfile` on a directory where projects locates. `Pipfile` gathers collection of modules which are utilized for development and production. 
 3) After gathering modules in `Pipfile`, install pipenv with command `pipenv install`. You can also install other modules if any update of requirements comes by (for example, `pipenv install xgboost` if we decide to include xgboost for adding another predictive modelling). 
 
 ### Model Building and Fine-Tuning
 
 1) Activate pipenv environment with command `pipenv shell` following the completion of pipenv installation. At this point, we are ready to do a few tasks.
-2) Conduct data exploration and preprocessing before proceeding to model fitting with tree-based learning. Then, we build machine learning models followed by parameter tuning for three models that produce the best possible prediction on the test set. These are extensively done in `project.ipynb`. 
+2) Open a new tab in bash terminal and activate a conda environment with command `conda activate env_python38`. Then, open jupyter noteboook or lab to do data exploration and preprocessing before proceeding to model fitting with tree-based learning. Then, we build machine learning models followed by parameter tuning for three models that produce the best possible prediction on the test set. A different apporach is taken for XGBoost tuning, that is finding optimum parameters using Hyperopt library. These are extensively done in `project.ipynb`. 
 
 ### Running Model Training and Results on the Test set
 
