@@ -190,17 +190,17 @@ Copy that response code and back to the remote host, then paste it. After your c
 ![image](screenshots/container_registry2.png)
 
 5) Deployment with Google Cloud Run (https://cloud.google.com/sdk/gcloud/reference/run/deploy):
-    - Deploy the image stored in container registry with command `gcloud run deploy ml-serve --image=eu.gcr.io/data-eng-camp-apr22/heart_failure_service@sha256:be6bcf45bed2616a69be9a59112272ef277d70aa69229dfc4661bb4423067b12 --region=europe-west2 --port=3000`
+- Deploy the image stored in container registry with command `gcloud run deploy ml-serve --image=eu.gcr.io/data-eng-camp-apr22/heart_failure_service@sha256:be6bcf45bed2616a69be9a59112272ef277d70aa69229dfc4661bb4423067b12 --region=europe-west2 --port=3000`
 
 ![image](screenshots/copy_image_detail.png)
 
-    - When it is successful, an unique url will appear. Copy the url to the browser of your choice. A service URL as a cloud deployment result: https://ml-serve-iy2jfge65q-nw.a.run.app
+- When it is successful, an unique url will appear. Copy the url to the browser of your choice. A service URL as a cloud deployment result: https://ml-serve-iy2jfge65q-nw.a.run.app
 
 ![image](screenshots/deploy_success.png)
 
 ![image](screenshots/deploy_success2.png)
 
-    - You are ready to try input the data and test its predictive ability. JSON input which is written to the request body should be as shown in an example below:
+- You are ready to try input the data and test its predictive ability. JSON input which is written to the request body should be as shown in an example below:
 
 ```
 {
