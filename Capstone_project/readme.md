@@ -61,6 +61,7 @@ A notebook with a detailed description of the Exploratory Data Analysis (EDA), a
 ### Important Note about environment
 
 This project used two different environments: 
+
     - a conda using python 3.8.13 for working on `project.ipynb`. Since a module `Hyperopt` does not work in jupyter lab called from `Pipfile`, I choose to do this task on my environment that has been existing since a year ago. 
     - a pipenv using python 3.9.13 for training, building bentos, testing services, and containerizing.
 
@@ -151,7 +152,7 @@ Then, execute command `docker push 21492rar/heart_failure_machine_learning:<Tag>
 
 ![image](screenshots/docker_hub.png)
 
-My docker hub repository: https://hub.docker.com/r/21492rar/heart_failure_machine_learning/tags
+Docker images are available on my docker hub repository: https://hub.docker.com/r/21492rar/heart_failure_machine_learning/tags
 
 ## 5) Deploy to Google Cloud
 
@@ -188,7 +189,7 @@ Copy that response code and back to the remote host, then paste it. After your c
 
 ![image](screenshots/copy_image_detail.png)
 
-    - When it is successful, an unique url will appear. Copy the url to the browser of your choice.
+    - When it is successful, an unique url will appear. Copy the url to the browser of your choice. A service URL as a cloud deployment result: https://ml-serve-iy2jfge65q-nw.a.run.app
 
 ![image](screenshots/deploy_success.png)
 
@@ -214,6 +215,14 @@ Copy that response code and back to the remote host, then paste it. After your c
 ```
 
 ![image](screenshots/test_deploy_cloud.png)
+
+    - The details of service health is presented shown below. 
+
+
+![image](screenshots/cloud_run.png)
+
+
+![image](screenshots/cloud_run2.png)
 
 This structure takes an inspiration from 
 https://github.com/ziritrion/ml-zoomcamp/tree/main/07_midterm_project
