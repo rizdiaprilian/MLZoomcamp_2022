@@ -62,8 +62,8 @@ A notebook with a detailed description of the Exploratory Data Analysis (EDA), a
 
 This project used two different environments: 
 
-    - a conda using python 3.8.13 for working on `project.ipynb`. Since a module `Hyperopt` does not work in jupyter lab called from `Pipfile`, I choose to do this task on my environment that has been existing since a year ago. 
-    - a pipenv using python 3.9.13 for training, building bentos, testing services, and containerizing.
+- a conda using python 3.8.13 for working on `project.ipynb`. Since a module `Hyperopt` does not work in jupyter lab called from `Pipfile`, I choose to do this task on my environment that has been existing since a year ago. 
+- a pipenv using python 3.9.13 for training, building bentos, testing services, and containerizing.
 
 ## 2) EDA, Feature Correlation, Feature Importance
 
@@ -90,10 +90,11 @@ A few findings to learn:
 ## 3) Running the Code 
 
 ### Model Building and Fine-Tuning
-    1) Prepare a file named `Pipfile` on a directory where projects locates. `Pipfile` gathers collection of modules which are utilized for development and production. 
-    2) After gathering modules in `Pipfile`, install pipenv with command `pipenv install`. You can also install other modules if any update of requirements comes by (for example, `pipenv install xgboost` if we decide to include xgboost for adding another predictive modelling). 
-    3) Activate pipenv environment with command `pipenv shell` following the completion of pipenv installation. At this point, we are ready to do a few tasks.
-    4) Conduct data exploration and preprocessing before proceeding to model fitting with tree-based learning. Then, we build machine learning models followed by parameter tuning for three models that produce the best possible prediction on the test set. These are extensively done in `project.ipynb`. 
+
+1) Prepare a file named `Pipfile` on a directory where projects locates. `Pipfile` gathers collection of modules which are utilized for development and production. 
+2) After gathering modules in `Pipfile`, install pipenv with command `pipenv install`. You can also install other modules if any update of requirements comes by (for example, `pipenv install xgboost` if we decide to include xgboost for adding another predictive modelling). 
+3) Activate pipenv environment with command `pipenv shell` following the completion of pipenv installation. At this point, we are ready to do a few tasks.
+4) Conduct data exploration and preprocessing before proceeding to model fitting with tree-based learning. Then, we build machine learning models followed by parameter tuning for three models that produce the best possible prediction on the test set. These are extensively done in `project.ipynb`. 
 
 ### Running Model Training and Results on the Test set
 
