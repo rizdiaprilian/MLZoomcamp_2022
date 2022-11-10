@@ -37,9 +37,9 @@ Ahmad, T. et al. (2017) ‘Survival Analysis of Heart Failure Patients: A Case S
 
 For this midterm project, a binary classification model is implemented on the case of heart failure with an aim of predicting patients' survival.
 
-Models involved in learning and generalising the context are decision tree, random forest and XGBoost. 
+Models involved in learning and generalising the context are decision tree, random forest and XGBoost. A Metric used to assess prediction capabilities is ROC-AUC.
 
-A notebook with a detailed description of the Exploratory Data Analysis (EDA), and model building and tuning is presented in `project.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `train.py`. A flask application served for responding to input data submitted from `send_data.py` is available in file `prediction_service.py`. The model registry is called from that flask for deployment (in waitress/gunicorn).
+A notebook with a detailed description of the Exploratory Data Analysis (EDA), and model building and tuning is presented in `project.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `train.py`. A prediction service composed of runners and APIs is served for responding to input data submitted from `send_data.py`: it is available in file `prediction_service_sklearn.py` and `prediction_service_xgboost.py`. An object service object is provided with a decorator method `svc.api` for defining API. A saved model in bentoml lists is retrieved for runner instances (in waitress/gunicorn).
 
 
 ### Files
@@ -48,12 +48,21 @@ A notebook with a detailed description of the Exploratory Data Analysis (EDA), a
 - `heart_failure_clinical_records_dataset.csv`: The collection of heart failure records in CSV format.
 - `project.ipynb` : A jupyter notebook containing model building and parameter fine-tuning. This file also build ML packages in bentoml.
 - `heart_failure_profile.html`: A summary of exploratory data analysis on heart failure in web page. This was produced with `pandas_profiling`.
-- `training.py`: A python app that build a bentoml registry.
+- `train.py`: A python app that build a bentoml registry.
 - `prediction_service_sklearn.py`: A service app in sklearn that call a trained model from BentoML artifact to give a prediction to input data in flask service.
 - `prediction_service_xgboost.py`: A service app in xgboost that call a trained model from BentoML artifact to give a prediction to input data in flask service.
 - `send_data.py`: A python app that gives a request and delivers an input data to a service app to produce a prediction.
 - `Pipfile`: A Pipfile for collection of libraries and modules dependencies.
 - `bentoml.yaml`: A structured file to produce/build a ML service container.
+- `requirements.txt`: A file for building a conda env.
+- `locustfile.py`: A file for testing responsive predictions againts concurrent requests.
+
+
+### Important Note about environment
+
+This project used two different environments: 
+    - a conda using python 3.8.13 for working on `project.ipynb`. Since a module `Hyperopt` does not work in jupyter lab called from `Pipfile`, I choose to do this task on my environment that has been existing since a year ago. 
+    - a pipenv using python 3.9.13 for training, building bentos, testing services, and containerizing.
 
 ## 2) EDA, Feature Correlation, Feature Importance
 
