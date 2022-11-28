@@ -2,7 +2,7 @@
 
 This module covers conversion to Lite and deployment to AWS Container Registry.
 
-![image](images/diagram.png)
+![image](images/diagram1.png)
 
 ### TensorFlow Lite
 
