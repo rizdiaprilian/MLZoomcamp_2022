@@ -23,3 +23,34 @@ docker run -it --rm -p 8500:8500 -v "$(pwd)/seq-model-dir:/models/sequential/1" 
 ```
 docker run -it --rm -p 8500:8500 -v "$(pwd)/efficient-net-dir:/models/eff-net/1" -e MODEL_NAME="eff-net" tensorflow/serving:2.7.0
 ```
+
+#### Docker
+
+Testing service with docker
+
+```
+docker run -it --rm \
+    -p 8500:8500 \
+    -v "$(pwd)/sequentials/efficient-net-dir:/models/eff-net/1" \
+    -e MODEL_NAME="eff-net" \
+    tensorflow/serving:2.7.0
+```
+
+Building a docker image (note that the directory `efficient-net-dir` is a subdirectory from `sequentials`)
+
+```
+docker build -t zoomcamp-eff-net:eff-net-v1  -f image-model.dockerfile
+```
+
+Do the same with gateway
+
+```
+docker build -t gateway-eff-net:eff-net-v1  -f image-gateway.dockerfile .
+```
+
+As there are two images, we want to bring two different application accessible to each other. To achieve this, `docker-compose.yaml` is the most adequate solution.
+
+
+
+
+```

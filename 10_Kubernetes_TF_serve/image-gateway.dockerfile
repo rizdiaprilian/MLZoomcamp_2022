@@ -1,3 +1,4 @@
+### Second ver
 FROM python:3.9.12-slim
 
 RUN pip install pipenv
@@ -8,8 +9,8 @@ COPY ["Pipfile", "Pipfile.lock", "./"]
 
 RUN pipenv install --system --deploy
 
-COPY ["gateway.py", "proto.py", "./"]
+COPY ["gateway_efficient_net.py", "proto.py", "./"]
 
 EXPOSE 9696
 
-ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "gateway:app"]
+ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "gateway_efficient_net:app"]
