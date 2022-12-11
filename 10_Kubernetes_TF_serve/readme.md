@@ -18,11 +18,30 @@ Also, after many times failing to run docker in bash terminal VSCode, luckily Ub
 docker run -it --rm -p 8500:8500 -v "$(pwd)/seq-model-dir:/models/sequential/1" -e MODEL_NAME="sequential" tensorflow/serving:2.7.0
 ```
 
+Here is a screenshot of starting tf-serving with Docker in Ubuntu:
+![image](images/run_tf-serving-docker_ubuntu.png)
+
+Then, you can give it a try predicting an image example by running command cells in jupyter notebook `tf-serving-connect-sequential-model.ipynb`.
+
 #### EfficientNet model
 
 ```
 docker run -it --rm -p 8500:8500 -v "$(pwd)/efficient-net-dir:/models/eff-net/1" -e MODEL_NAME="eff-net" tensorflow/serving:2.7.0
 ```
+
+![image](images/run_tf-serving-docke-eff-net_ubuntu.png)
+
+Variable of `host`, `channel`, and `stub` in `tf-serving-connect-sequential-model.ipynb`must be updated so that its prediction service can receive model serving delivered from running docker.
+
+#### Testing Gateway in Flask App
+
+A python script is used to run a flask app acting as "Gateway" for receiving `host` and `channel` from running docker and an input image, and it is executed in the Pipenv environment.
+
+    1) Create a new bash tab and activate Pipenv with `pipenv shell`.
+    2) Confirm that a running docker, which hosting efficient net model serving, remains active.
+    3) Start flask app with command `python gateway_efficient_net.py`. 
+    4) Create a new bash tab and execute `test_efficient-net-serving.py` and wait its prediction to come out.
+    5) You can try predicting other images listed in `list_urls_bird.txt` by replacing `url`s value in `test_efficient-net-serving.py` and re-run it.
 
 #### Docker
 
