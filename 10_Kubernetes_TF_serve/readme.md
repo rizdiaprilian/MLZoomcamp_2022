@@ -2,8 +2,6 @@
 
 This module covers the practices of ramping up prediction in packages with Kubernetes and TensorFlow Serve.
 
-### Kubernetes
-
 ### TensorFlow Serve
 
 For more detail on serving TensorFlow model with docker, please read [here](https://www.tensorflow.org/tfx/serving/docker)
@@ -63,3 +61,6 @@ docker build -t gateway-eff-net:eff-net-v1  -f image-gateway.dockerfile .
 As there are two images, we want to see that two different dockers can interact with each other within the same network group. Images built using two dockerfiles as covered above are then put together into a single large package: `docker-compose.yaml`.
 
 Command `docker-compose up` will start up gateway and model serving images simultaneously.
+
+### Kubernetes
+

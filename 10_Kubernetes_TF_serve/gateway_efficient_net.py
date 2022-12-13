@@ -1,6 +1,5 @@
 import os
 import grpc
-import tensorflow as tf
 
 from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2_grpc
@@ -18,8 +17,6 @@ stub = prediction_service_pb2_grpc.PredictionServiceStub(channel)
 
 
 def preprocess_ease(image_urls):
-    # image_url = tf.keras.utils.get_file(origin=image_urls[0])
-    # img_main = tf.keras.preprocessing.image.load_img(image_url, target_size=(260,260) )
     preprocess_engine = BasePreprocessor((224, 224))
     image_input = download_image(image_urls[0])
     img_main = preprocess_engine.resize_image(image_input)

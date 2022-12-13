@@ -11,6 +11,7 @@ keras-image-helper = "*"
 tensorflow-protobuf = "==2.11.0"
 opencv-python = "*"
 keras = "==2.9.0"
+fastapi = "*"
 
 [dev-packages]
 
