@@ -47,7 +47,7 @@ def prepare_response(pb_response):
 def predict(url):
     X = preprocess_ease(url)
     pb_request = prepare_request(X)
-    pb_response = stub.Predict(pb_request, timeout=30.0)
+    pb_response = stub.Predict(pb_request, timeout=60.0)
     response = prepare_response(pb_response)
     return response
 

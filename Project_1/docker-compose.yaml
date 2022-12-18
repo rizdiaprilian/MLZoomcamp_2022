@@ -1,10 +1,16 @@
 version: "3.9"
 services:
-  bird-model:
+  eff-net:
     image: zoomcamp-eff-net:eff-net-v1
   gateway:
     image: gateway-eff-net:eff-net-v1
     environment:
-      - TF_SERVING_HOST=bird-model:8500
+      - TF_SERVING_HOST=eff-net:8500
     ports:
       - "9696:9696"
+  # gateway-windows:
+  #   image: gateway-eff-net:eff-net-v1-windows
+  #   environment:
+  #     - TF_SERVING_HOST=eff-net:8500
+  #   ports:
+  #     - "9696:9696"
