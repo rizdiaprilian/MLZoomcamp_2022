@@ -22,70 +22,70 @@ Three images are available for download from https://images.cv/. As their direct
 
 #### Serverless
 
-    After getting `lambda_function.py` ready for deployment, we use docker to contain the file along with tflite model.
+After getting `lambda_function.py` ready for deployment, we use docker to contain the file along with tflite model.
 
+```
+docker build -t serverless-bird:eff-net-v1  -f serverless-bird.dockerfile .
+```
+
+This image has been available in [docker hub](https://hub.docker.com/r/21492rar/bird-image-classification/tags). So you may pull the image and push it to ECR.
+
+1. Prepare docker image
+    - Create a new repository `bird-tflite` with command `aws ecr create-repository --repository-name bird-tflite`
+    - Login to docker with commadn `docker login -u AWS -p $(aws ecr get-login-password --profile default) \
+                https://071714138980.dkr.ecr.eu-west-2.amazonaws.com`
+    - Pull the specified image with `docker pull 21492rar/bird-image-classification:serverless-bird`
+
+2. Push to AWS ECR
+
+    - place value for `REMOTE_URI` with command below:
     ```
-    docker build -t serverless-bird:eff-net-v1  -f serverless-bird.dockerfile .
+    ACCOUNT=071714138980
+    REGION=eu-west-2
+    REGISTRY=bird-tflite
+    PREFIX=${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${REGISTRY}
+
+    TAG=bird-tflite-eff-net-v1
+    REMOTE_URI=${PREFIX}:${TAG}
     ```
+    - command `docker tag 21492rar/bird-image-classification:serverless-bird ${REMOTE_URI}`
+    - command `docker push ${REMOTE_URI}`
+    - Ensure the completion of pushing the image to ECR
+    ![images](images/serverless_resultant.png)
+    ![images](images/serverless_resultant2.png)
 
-    This image has been available in [docker hub](https://hub.docker.com/r/21492rar/bird-image-classification/tags). So you may pull the image and push it to ECR.
+    - Create lambda function
+    ![images](images/lambda_function_create.png)
 
-    1. Prepare docker image
-        - Create a new repository `bird-tflite` with command `aws ecr create-repository --repository-name bird-tflite`
-        - Login to docker with commadn `docker login -u AWS -p $(aws ecr get-login-password --profile default) \
-                    https://071714138980.dkr.ecr.eu-west-2.amazonaws.com`
-        - Pull the specified image with `docker pull 21492rar/bird-image-classification:serverless-bird`
+    - Configure memory
+    ![image](images/serverless_config.png)
 
-    2. Push to AWS ECR
+    - Testing
+    ![images](images/serverless_test.png)
+    ![images](images/serverless_test_result.png)
+    
 
-        - place value for `REMOTE_URI` with command below:
-        ```
-        ACCOUNT=071714138980
-        REGION=eu-west-2
-        REGISTRY=bird-tflite
-        PREFIX=${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${REGISTRY}
+3. Exposing Gateway
 
-        TAG=bird-tflite-eff-net-v1
-        REMOTE_URI=${PREFIX}:${TAG}
-        ```
-        - command `docker tag 21492rar/bird-image-classification:serverless-bird ${REMOTE_URI}`
-        - command `docker push ${REMOTE_URI}`
-        - Ensure the completion of pushing the image to ECR
-        ![images](images/serverless_resultant.png)
-        ![images](images/serverless_resultant2.png)
+    - API Gateway -> Build REST API
+    ![images](images/gatewayAPI.png)
+    ![images](images/gatewayAPI_2.png)
+    ![images](images/gatewayAPI_3.png)
 
-        - Create lambda function
-        ![images](images/lambda_function_create.png)
+    An entire cycle of gateway API using lambda function is presented below:
+    ![images](images/gatewayAPI_diagram.png)
 
-        - Configure memory
-        ![image](images/serverless_config.png)
+    - Put the same url to `Request Body` and test:
+    ```{
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Wood_Duck_%28Aix_sponsa%29.jpg"
+        }```
+    The result should look like this: 
+    ![images](images/gatewayAPI_test.png)
 
-        - Testing
-        ![images](images/serverless_test.png)
-        ![images](images/serverless_test_result.png)
-        
+    - Deploy API: copy the generated/invoked URL and paste it to `test_efficient-net-serving.py` as `url`.
+    ![images](images/gatewayAPI_deploy.png)
 
-    3. Exposing Gateway
-
-        - API Gateway -> Build REST API
-        ![images](images/gatewayAPI.png)
-        ![images](images/gatewayAPI_2.png)
-        ![images](images/gatewayAPI_3.png)
-
-        An entire cycle of gateway API using lambda function is presented below:
-        ![images](images/gatewayAPI_diagram.png)
-
-        - Put the same url to `Request Body` and test:
-        ```{
-            "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Wood_Duck_%28Aix_sponsa%29.jpg"
-            }```
-        The result should look like this: 
-        ![images](images/gatewayAPI_test.png)
-
-        - Deploy API: copy the generated/invoked URL and paste it to `test_efficient-net-serving.py` as `url`.
-        ![images](images/gatewayAPI_deploy.png)
-
-        - Test with python `python test_serverless.py`
+    - Test with python `python test_serverless.py`
 
 #### Conversion to SavedModel
 
