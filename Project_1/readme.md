@@ -51,39 +51,39 @@ Three images are available for download from https://images.cv/. As their direct
         - command `docker tag 21492rar/bird-image-classification:serverless-bird ${REMOTE_URI}`
         - command `docker push ${REMOTE_URI}`
         - Ensure the completion of pushing the image to ECR
-        ![image](images/serverless_resultant.png)
-        ![image](images/serverless_resultant2.png)
+        ![images](images/serverless_resultant.png)
+        ![images](images/serverless_resultant2.png)
 
         - Create lambda function
-        ![image](images/lambda_function_create.png)
+        ![images](images/lambda_function_create.png)
 
         - Configure memory
         ![image](images/serverless_config.png)
 
         - Testing
-        ![image](images/serverless_test.png)
-        ![image](images/serverless_test_result.png)
+        ![images](images/serverless_test.png)
+        ![images](images/serverless_test_result.png)
         
 
     3. Exposing Gateway
 
         - API Gateway -> Build REST API
-        ![image](images/gatewayAPI.png)
-        ![image](images/gatewayAPI_2.png)
-        ![image](images/gatewayAPI_3.png)
+        ![images](images/gatewayAPI.png)
+        ![images](images/gatewayAPI_2.png)
+        ![images](images/gatewayAPI_3.png)
 
         An entire cycle of gateway API using lambda function is presented below:
-        ![image](images/gatewayAPI_diagram.png)
+        ![images](images/gatewayAPI_diagram.png)
 
         - Put the same url to `Request Body` and test:
         ```{
             "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Wood_Duck_%28Aix_sponsa%29.jpg"
             }```
         The result should look like this: 
-        ![image](images/gatewayAPI_test.png)
+        ![images](images/gatewayAPI_test.png)
 
         - Deploy API: copy the generated/invoked URL and paste it to `test_efficient-net-serving.py` as `url`.
-        ![image](images/gatewayAPI_deploy.png)
+        ![images](images/gatewayAPI_deploy.png)
 
         - Test with python `python test_serverless.py`
 
@@ -124,7 +124,7 @@ docker run -it --rm -p 8500:8500 -v "$(pwd)/seq-model-dir:/models/sequential/1" 
 
 Here is a screenshot of starting tf-serving with Docker in Ubuntu:
 
-![image](images/run_tf-serving-docker_ubuntu.png)
+![images](images/run_tf-serving-docker_ubuntu.png)
 
 Then, you can give it a try predicting an image example by running command cells in jupyter notebook `tf-serving-connect-sequential-model.ipynb`.
 
@@ -134,7 +134,7 @@ Then, you can give it a try predicting an image example by running command cells
 docker run -it --rm -p 8500:8500 -v "$(pwd)/efficient-net-dir:/models/eff-net/1" -e MODEL_NAME="eff-net" tensorflow/serving:2.7.0
 ```
 
-![image](images/run_tf-serving-docker-eff-net_ubuntu.png)
+![images](images/run_tf-serving-docker-eff-net_ubuntu.png)
 
 Variable of `host`, `channel`, and `stub` in `tf-serving-connect-sequential-model.ipynb`must be updated so that its prediction service can receive model serving delivered from running docker.
 
