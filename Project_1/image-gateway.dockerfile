@@ -13,4 +13,8 @@ COPY ["gateway_efficient_net.py", "proto.py", "./"]
 
 EXPOSE 9696
 
+### In Linux Machine
 ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "gateway_efficient_net:app"]
+
+### In Windows Machine
+# ENTRYPOINT ["waitress-serve", "--listen=0.0.0.0:9696", "gateway_efficient_net:app"]
