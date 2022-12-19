@@ -1,24 +1,49 @@
 ### Project 1: Image Classification on Bird
 
-This project focuses on restating purposes of pretrained model deep learning that becomes able to tell distinction features of three species of birds: Red-headed woodpecker, Northern mockingbird, and Wood duck.
+A second project of MLZoomcamp. This repo is served with purpose of presenting what and how transfer learning can understand bird species with machine learning engineering practices.
 
-Two pretrained models previously trained on imagenet are chosen : VGG16 and EfficientNetB2.
+#### Problem Context
 
-### Image Preparation
+I came across the idea of making better use of pretrained Keras models that would see itself being able to learn and recognize variational patterns of animals under the same class, particularly class of bird. Acknowledging my liking of bird, I took a decision to put my machine learning engineering ability and knowledge into building project that would share meaningful purpose that machine learning could hope to achieve.
 
-Three images are available for download from https://images.cv/. As their directories are in state of zip format, we would have to modify its tree structure that TensorFlow could be able to build complex input pipelines.
+This project focuses on restating purposes of pretrained model deep learning (transfer learning) that becomes able to tell distinction features of three species of birds: Red-headed woodpecker, Northern mockingbird, and Wood duck.
 
-#### Building Data Pipeline
+EfficientNetB2 is chosen as a convolutional base and a customised fully-connected layer is placed on the top of this base. This layer is tasked to give output based on probability generated from a `softmax` output layer. Confusion matrix is used for measuring quality.
+
+#### Dataset Image 
+
+Three images are available for download from https://images.cv/. As their directories arrived in zip format, it would be neceassary to run through steps of modification and file organization so that TensorFlow could be able to submit images to training model across input pipelines in batches.
+
+### Project Description
+
+A notebook with a detailed description of the Exploratory Data Analysis (EDA), and model building and tuning is presented in `project.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `train.py`. A prediction service composed of runners and APIs is served for responding to input data submitted from `send_data.py`: it is available in file `prediction_service_sklearn.py` and `prediction_service_xgboost.py`. An object service object is provided with a decorator method `svc.api` for defining API. A saved model in bentoml lists is retrieved for runner instances (in waitress/gunicorn).
+
+### Files
+
+- `readme.md`: A full description of the project for reader to gain a greater picture of this project.
+- `images_<bird_species>`: The collection of bird images in jpeg format. Breakdowns of each of their image directories are `train`, `val`, and `test`.
+- `bird_classification.ipynb` : A jupyter notebook that covers steps from image preparation and analysis to prediction against `test` images. Also included in this file: converting ML to `.tflite` with TFLite along with inference testing.
+- `lambda_function.py`: A python app that serves predictive function to respond to requests across AWS Lambda.
+- `test_serverless.py`: A python file for testing response of `lambda_function.py`.
+- `serverless-bird.dockerfile`: A dockerfile for building docker image containing functions defined from `lambda_function.py`.
+- `tf-serving-connect-sequential-model.ipynb`: A jupyter notebook that covers testing model specifically tailored for TensorFlow serving.
+- `gateway_efficient_net.py`: A flask app that makes use of trained EfficientNet in container to make inference of incoming image URL input.
+- `test_efficient-net-serving.py`: A python file for testing response of `gateway_efficient_net.py`.
+- `image-model.dockerfile`: A dockerfile for building docker image containing trained EfficientNet stored in `efficient-net-dir` and run it with TensorFlow Serving.
+- `image-gateway.dockerfile`: A dockerfile for building docker image containing application built from `gateway_efficient_net.py`.
+- `docker-compose.yaml`: A docker compose that coordinate and run two images `gateway` and `model` simultaneously. 
+- `Pipfile`: A Pipfile for collection of libraries and modules dependencies.
+- `list_urls_bird.txt`: A text file serves as a storage of collections of URLs directed to birds.
+- `model_seq.h5`: A h5 file that host weights of trained sequential model.
+- `model_efficient_net.h5`: A h5 file that host weights of trained EfficientNet model.
 
 
+### Important Note about environment
 
-#### Building Models
+This project used two different environments, with most of parts were done in conda environment: 
 
-
-#### Training
-
-
-#### Testing
+- a conda using python 3.8.12 for working on `bird_classification.ipynb`, noticing the compatibility issue of module `Keras` with `Pipfile`. 
+- a pipenv using python 3.9.13 solely for containerization of `gateway_efficient_net.py`.
 
 #### Serverless
 
@@ -106,13 +131,32 @@ tf.saved_model.save(model_eff_net, 'efficient-net-dir')
 
 Tree structure of SavedModel deep learnings should be shown as below:
 
+![images](images/saved_model_eff-net.png)
+
 Retrieve signature definition of `efficient-net-dir `. We will use them later.
 
 ```
 saved_model cli show --dir efficient-net-dir 
 ```
 
-Copy and paste information of input-output and saved them in a new txt file.
+Information of inputs and outputs TensorInfo:
+
+```
+The given SavedModel SignatureDef contains the following input(s):
+  inputs['input_23'] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 260, 260, 3)
+      name: serving_default_input_23:0
+The given SavedModel SignatureDef contains the following output(s):
+  outputs['pred'] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 3)
+      name: StatefulPartitionedCall:0
+Method name is: tensorflow/serving/predict
+
+```
+
+Use this information for building model serving functions specified in a program `gateway-efficient-net.py`
 
 #### TF-Serving
 
@@ -136,7 +180,7 @@ docker run -it --rm -p 8500:8500 -v "$(pwd)/efficient-net-dir:/models/eff-net/1"
 
 ![images](images/run_tf-serving-docker-eff-net_ubuntu.png)
 
-Variable of `host`, `channel`, and `stub` in `tf-serving-connect-sequential-model.ipynb`must be updated so that its prediction service can receive model serving delivered from running docker.
+Variable of `host`, `channel`, and `stub` in `tf-serving-connect-sequential-model.ipynb` must be updated so that its prediction service can receive model serving delivered from running docker.
 
 #### Testing Gateway in Flask App
 
