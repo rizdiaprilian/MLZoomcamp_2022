@@ -26,7 +26,7 @@ A notebook with a detailed description of the Exploratory Data Analysis (EDA), a
 - `lambda_function.py`: A python app that serves predictive function to respond to requests across AWS Lambda.
 - `test_serverless.py`: A python file for testing response of `lambda_function.py`.
 - `serverless-bird.dockerfile`: A dockerfile for building docker image containing functions defined from `lambda_function.py`.
-- `tf-serving-connect-sequential-model.ipynb`: A jupyter notebook that covers testing model specifically tailored for TensorFlow serving.
+- `tf-serving-connect-sequential-model.ipynb`: A jupyter notebook that covers testing on models specifically tailored for TensorFlow serving.
 - `gateway_efficient_net.py`: A flask app that makes use of trained EfficientNet in container to make inference of incoming image URL input.
 - `test_efficient-net-serving.py`: A python file for testing response of `gateway_efficient_net.py`.
 - `image-model.dockerfile`: A dockerfile for building docker image containing trained EfficientNet stored in `efficient-net-dir` and run it with TensorFlow Serving.
@@ -76,16 +76,20 @@ This image has been available in [docker hub](https://hub.docker.com/r/21492rar/
     - command `docker tag 21492rar/bird-image-classification:serverless-bird ${REMOTE_URI}`
     - command `docker push ${REMOTE_URI}`
     - Ensure the completion of pushing the image to ECR
+    
     ![images](images/serverless_resultant.png)
     ![images](images/serverless_resultant2.png)
 
     - Create lambda function
+    
     ![images](images/lambda_function_create.png)
 
     - Configure memory
+    
     ![image](images/serverless_config.png)
 
     - Testing
+    
     ![images](images/serverless_test.png)
     ![images](images/serverless_test_result.png)
     
@@ -93,17 +97,22 @@ This image has been available in [docker hub](https://hub.docker.com/r/21492rar/
 3. Exposing Gateway
 
     - API Gateway -> Build REST API
+    
     ![images](images/gatewayAPI.png)
     ![images](images/gatewayAPI_2.png)
     ![images](images/gatewayAPI_3.png)
 
     An entire cycle of gateway API using lambda function is presented below:
-    ![images](images/gatewayAPI_diagram.png)
+   
+   ![images](images/gatewayAPI_diagram.png)
 
     - Put the same url to `Request Body` and test:
+
     ```{
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Wood_Duck_%28Aix_sponsa%29.jpg"
-        }```
+    }
+    ```
+    
     The result should look like this: 
     ![images](images/gatewayAPI_test.png)
 
