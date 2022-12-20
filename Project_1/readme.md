@@ -44,17 +44,16 @@ Model deployment is carried out under two scenarios: serverless and gateway. Pyt
 
 ### Important Note about environment
 
-This project used two different environments, with most of parts were done in conda environment: 
+This project used three different environments, with most of parts were done in conda environment: 
 
-- a conda using python 3.8.12 for working on `bird_classification.ipynb`, noticing the compatibility issue of module `Keras` with `Pipfile`. 
+- a conda environment using python 3.8.12 for working on `bird_classification.ipynb` in local machine, noticing the compatibility issue of module `Keras` with `Pipfile`. 
+- a conda environment using python 3.9.15 for experimenting image deployment kubernetes in AWS remote.
 - a pipenv using python 3.9.13 solely for containerization of `gateway_efficient_net.py`.
 
 
 ## 2) Conversion to SavedModel
 
-Start with command `ipython`. Interactive python is launched.
-
-Then, write and enter each line:
+Start with command `ipython`. Write and enter each line:
 
 ```
 import tensorflow as tf
@@ -165,8 +164,8 @@ This image has been available in [docker hub](https://hub.docker.com/r/21492rar/
 
 1. Prepare docker image
     - Create a new repository `bird-tflite` with command `aws ecr create-repository --repository-name bird-tflite`
-    - Login to docker with commadn `docker login -u AWS -p $(aws ecr get-login-password --profile default) \
-                https://<ACCOUNT_NO>.dkr.ecr.eu-west-2.amazonaws.com`
+    - Login to docker with command `docker login -u AWS -p $(aws ecr get-login-password --profile default) \
+                https://${ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com`
     - Pull the specified image with `docker pull 21492rar/bird-image-classification:serverless-bird`
 
 2. Push to AWS ECR
@@ -239,7 +238,7 @@ Working on for the second option, deploy with kubernetes, most of tasks are enti
 
 #### Local Deployment
 
-Confirm that a cluster has already been created. If not, please follow instructions from (here)[https://github.com/alexeygrigorev/mlbookcamp-code/blob/master/course-zoomcamp/10-kubernetes/06-kubernetes-simple-service.md]. 
+Confirm that a cluster has already been created. If not, please follow instructions from ![here](https://github.com/alexeygrigorev/mlbookcamp-code/blob/master/course-zoomcamp/10-kubernetes/06-kubernetes-simple-service.md). 
 
 Note that all of YAML files for Kubernetes are stored in `kube-config` directory.
 
@@ -272,7 +271,54 @@ The submission result of TF-serving and gateway to clusters should be as shown b
 
 #### EKS
 
-In order to leverage Kubernetes service in the AWS environment, EKS offers ways that make provisioning on compute resource becomes more efficient and give better control of scaling application.
+In order to leverage Kubernetes service in the AWS environment, EKS offers ways that make provisioning on compute resource becomes more efficient and give better control of scaling application. A special tool named `eksctl` must be downloaded first prior to configuration. Also, two docker images `zoomcamp-eff-net:eff-net-v1` and `gateway-eff-net:eff-net-v1` must be pushed to AWS ECR.
+
+- Create eks config file `eks-config.yaml`
+
+- Create a EKS cluster stack: `eksctl create cluster -f eks-config.yaml`. Bear in mind that this step would require 15-20 minutes to complete.
+
+- After a long while, a cluster should appear in AWS EKS.
+![images](images/EKS_resultant.png)
+
+![images](images/EKS_resultant_in_AWS_EC2.png)
+
+- Login to docker: `docker login -u AWS -p $(aws ecr get-login-password --profile default) \
+        https://${ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com`
+
+```
+# Registry URI
+ACCOUNT_ID=<ACCOUNT_ID>
+REGION=eu-west-2
+REGISTRY_NAME=efficient-net-eks
+PREFIX=${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${REGISTRY_NAME}
+
+# Tag local docker images to remote tag
+GATEWAY_LOCAL=gateway-eff-net:eff-net-v1
+GATEWAY_REMOTE=${PREFIX}:gateway-eff-net-eff-net-v1
+docker tag ${GATEWAY_LOCAL} ${GATEWAY_REMOTE}
+
+MODEL_LOCAL=zoomcamp-eff-net:eff-net-v1
+MODEL_REMOTE=${PREFIX}:zoomcamp-eff-net-eff-net-v1
+docker tag ${MODEL_LOCAL} ${MODEL_REMOTE}
+```
+- Push two images to ECR: `docker push ${MODEL_REMOTE}` and `docker push ${GATEWAY_REMOTE}`
+
+![images](images/ECR_result.png)
+
+- Apply all the yaml config files to EKS cluster node:
+
+```
+kubectl apply -f model-deployment.yaml
+kubectl apply -f model-service.yaml
+kubectl apply -f gateway-deployment.yaml
+kubectl apply -f gateway-service.yaml
+```
+
+![images](images/EKS_create_result.png)
+
+- Test it: `python gateway_efficient_net.py` and `python test_efficient-net-serving.py`. Remind that information of `EXTERNAL-IP` of load balancer must be set for `url` when testing gateway service.  
+
+After getting done with this, just delete EKS cluster : `eksctl delete cluster --name efficient-net-eks`
 
 ### Gradio
 
