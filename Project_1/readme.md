@@ -166,14 +166,14 @@ This image has been available in [docker hub](https://hub.docker.com/r/21492rar/
 1. Prepare docker image
     - Create a new repository `bird-tflite` with command `aws ecr create-repository --repository-name bird-tflite`
     - Login to docker with commadn `docker login -u AWS -p $(aws ecr get-login-password --profile default) \
-                https://071714138980.dkr.ecr.eu-west-2.amazonaws.com`
+                https://<ACCOUNT_NO>.dkr.ecr.eu-west-2.amazonaws.com`
     - Pull the specified image with `docker pull 21492rar/bird-image-classification:serverless-bird`
 
 2. Push to AWS ECR
 
     - place value for `REMOTE_URI` with command below:
     ```
-    ACCOUNT=071714138980
+    ACCOUNT=<ACCOUNT_NO>
     REGION=eu-west-2
     REGISTRY=bird-tflite
     PREFIX=${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${REGISTRY}
@@ -233,16 +233,46 @@ This image has been available in [docker hub](https://hub.docker.com/r/21492rar/
     - Test with python `python test_serverless.py`
 
 
-
-
 ### Kubernetes
 
+Working on for the second option, deploy with kubernetes, most of tasks are entirely done with `kubectl` and `kind`. YAML files are used with the purpose of organising applications from specified images, including resource limits and ports.
+
 #### Local Deployment
+
+Confirm that a cluster has already been created. If not, please follow instructions from (here)[https://github.com/alexeygrigorev/mlbookcamp-code/blob/master/course-zoomcamp/10-kubernetes/06-kubernetes-simple-service.md]. 
+
+Note that all of YAML files for Kubernetes are stored in `kube-config` directory.
+
+- TF-serving Deployment
+    - Specify a docker image `zoomcamp-eff-net:eff-net-v1` that housing TF-serving EfficientNet model in `model-deployment.yaml`. Load that image first to cluster nodes: `kind load docker-image zoomcamp-eff-net:eff-net-v1`
+    - Create model deployment functioning as TF-serving: `kubectl apply -f model-deployment.yaml`
+    - `kubectl get pod` gives us a unique ID on running pod created earlier.
+    - With that unique ID, put forward on that running pod: `kubectl port-forward tf-serve-bird-<unique_ID> 8500:8500`
+    - Run flask app from `python gateway_efficient_net.py` followed by `test_efficient-net-serving.py` to see whether TF-serving from running pod works smoothly.
+
+    - Build service accustomed to TF-serving: `kubectl apply -f gateway-service.yaml`
+    - Put that service forward: `kubectl port-forward service/gateway-serve 8080:80`
+    - Test it: `python gateway_efficient_net.py` and `python test_efficient-net-serving.py`
+
+- Gateway Deployment
+    - Specify a docker image `gateway-eff-net:eff-net-v1` that housing gateway in `gateway-deployment.yaml`. Load that image first to cluster nodes: `kind load docker-image gateway-eff-net:eff-net-v1`.
+    - Create gateway deployment functioning as gateway that sends requests to TF-serving: `kubectl apply -f gateway-deployment.yaml`
+    - Put forward on gateway pod: `kubectl port-forward gateway-serve-<unique_ID> 9696:9696`
+    - Test it: `python test_efficient-net-serving.py`
+
+    - Build gateway service: `kubectl apply -f gateway-service.yaml`
+    - `kubectl port-forward service/gateway-serve 8080:80`
+    - Change port from `9696` to `8080` before testing: `python test_efficient-net-serving.py`
+
+The submission result of TF-serving and gateway to clusters should be as shown below.
+![images](images/kubectl_get_pod.png)
+
+![images](images/kubectl_get_service.png)
 
 
 #### EKS
 
-
+In order to leverage Kubernetes service in the AWS environment, EKS offers ways that make provisioning on compute resource becomes more efficient and give better control of scaling application.
 
 ### Gradio
 
