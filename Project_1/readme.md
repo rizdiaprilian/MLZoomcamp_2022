@@ -1,8 +1,9 @@
-### Project 1: Image Classification on Bird
+## Project 1: Image Classification on Bird
 
 A second project of MLZoomcamp. This repo is served with purpose of presenting what and how transfer learning can understand bird species with machine learning engineering practices.
 
-#### Problem Context
+## 1) Introduction
+### Problem Context
 
 I came across the idea of making better use of pretrained Keras models that would see itself being able to learn and recognize variational patterns of animals under the same class, particularly class of bird. Acknowledging my liking of bird, I took a decision to put my machine learning engineering ability and knowledge into building project that would share meaningful purpose that machine learning could hope to achieve.
 
@@ -10,13 +11,16 @@ This project focuses on restating purposes of pretrained model deep learning (tr
 
 EfficientNetB2 is chosen as a convolutional base and a customised fully-connected layer is placed on the top of this base. This layer is tasked to give output based on probability generated from a `softmax` output layer. Confusion matrix is used for measuring quality.
 
-#### Dataset Image 
+### Dataset Image 
 
 Three images are available for download from https://images.cv/. As their directories arrived in zip format, it would be neceassary to run through steps of modification and file organization so that TensorFlow could be able to submit images to training model across input pipelines in batches.
 
 ### Project Description
 
-A notebook with a detailed description of the Exploratory Data Analysis (EDA), and model building and tuning is presented in `project.ipynb`. Python scripts that specifically designed for training and storing its artifact are prepared in `train.py`. A prediction service composed of runners and APIs is served for responding to input data submitted from `send_data.py`: it is available in file `prediction_service_sklearn.py` and `prediction_service_xgboost.py`. An object service object is provided with a decorator method `svc.api` for defining API. A saved model in bentoml lists is retrieved for runner instances (in waitress/gunicorn).
+Sequences of executions begins from image preparation and analysis, deep learning building, training, and measuring accuracy; these are covered in `bird_classification.ipynb`. Trained models, resides in directory 'sequentials', goes through conversion process in which its structures change from `assets`, `variables`, and `savedmodel.pb` to TFlite format and SavedModel suitable for sending prediction in respond to incoming requests across REST API or running docker images.
+
+Model deployment is carried out under two scenarios: serverless and gateway. Python scripts that specifically designed for responding to requests and serving prediction are prepared in `lambda_function.py` and `gateway_efficient_net.py`. A prediction service composed of runners and APIs is served for responding to input data submitted from `test_serverless.py` and `test_efficient-net-serving.py`. Docker is used as a main backbone of building and deploying images to AWS cloud service.
+
 
 ### Files
 
@@ -45,7 +49,111 @@ This project used two different environments, with most of parts were done in co
 - a conda using python 3.8.12 for working on `bird_classification.ipynb`, noticing the compatibility issue of module `Keras` with `Pipfile`. 
 - a pipenv using python 3.9.13 solely for containerization of `gateway_efficient_net.py`.
 
-#### Serverless
+
+## 2) Conversion to SavedModel
+
+Start with command `ipython`. Interactive python is launched.
+
+Then, write and enter each line:
+
+```
+import tensorflow as tf
+from tensorflow import keras
+
+model_seq = keras.models.load_model('./model_seq.h5')
+tf.saved_model.save(model_seq, 'seq-model-dir')
+
+model_eff_net = keras.models.load_model('./model_efficient_net.h5')
+tf.saved_model.save(model_eff_net, 'efficient-net-dir')
+```
+
+Tree structure of SavedModel deep learnings should be shown as below:
+
+![images](images/saved_model_eff-net.png)
+
+Retrieve signature definition of `efficient-net-dir ` (located in `sequentials` directory).
+
+```
+cd sequentials
+saved_model cli show --dir efficient-net-dir 
+```
+
+Information of inputs and outputs TensorInfo:
+
+```
+The given SavedModel SignatureDef contains the following input(s):
+  inputs['input_23'] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 260, 260, 3)
+      name: serving_default_input_23:0
+The given SavedModel SignatureDef contains the following output(s):
+  outputs['pred'] tensor_info:
+      dtype: DT_FLOAT
+      shape: (-1, 3)
+      name: StatefulPartitionedCall:0
+Method name is: tensorflow/serving/predict
+
+```
+
+Use this information for building model serving functions specified in a program `gateway-efficient-net.py`.
+
+### Running Trained SavedModel with Docker and TF-Serving
+
+#### A) Sequential model (using feature extraction from VGG16)
+
+```
+docker run -it --rm -p 8500:8500 -v "$(pwd)/seq-model-dir:/models/sequential/1" -e MODEL_NAME="sequential" tensorflow/serving:2.7.0
+```
+
+Here is a screenshot of starting tf-serving with Docker in Ubuntu:
+
+![images](images/run_tf-serving-docker_ubuntu.png)
+
+Then, you can give it a try predicting an image example by running command cells in jupyter notebook `tf-serving-connect-sequential-model.ipynb`.
+
+#### B) EfficientNet model
+
+```
+docker run -it --rm -p 8500:8500 -v "$(pwd)/efficient-net-dir:/models/eff-net/1" -e MODEL_NAME="eff-net" tensorflow/serving:2.7.0
+```
+
+![images](images/run_tf-serving-docker-eff-net_ubuntu.png)
+
+Variable of `host`, `channel`, and `stub` in `tf-serving-connect-sequential-model.ipynb` must be updated so that its prediction service can receive model serving delivered from running docker.
+
+### Testing Gateway in Flask App
+
+A python script is used to run a flask app acting as "Gateway" for receiving `host` and `channel` from running docker and an input image, and it is executed in the Pipenv environment.
+
+    1) Create a new bash tab and activate Pipenv with `pipenv shell`.
+    2) Confirm that a running docker, which hosting efficient net model serving, remains active.
+    3) Start flask app with command `python gateway_efficient_net.py`. 
+    4) Create a new bash tab and execute `test_efficient-net-serving.py` and wait its prediction to come out.
+    5) You can try predicting other images listed in `list_urls_bird.txt` by replacing `url`s value in `test_efficient-net-serving.py` and re-run it.
+
+### Docker-compose
+
+To make model serving and gateway easier to manage and maintain, we take a step-up on docker by defining iamges using these files: `image-gateway.dockerfile` and `image-model.dockerfile`. 
+
+Building a docker image (note that the directory `efficient-net-dir` is a subdirectory from `sequentials`)
+
+```
+docker build -t zoomcamp-eff-net:eff-net-v1  -f image-model.dockerfile .
+```
+
+Do the same with gateway:
+
+```
+docker build -t gateway-eff-net:eff-net-v1  -f image-gateway.dockerfile .
+```
+
+As there are two images, we want to see that two different dockers can interact with each other within the same network group. Images built using two dockerfiles as covered above are then put together into a single large package: `docker-compose.yaml`.
+
+Command `docker-compose up` will start up gateway and model serving images simultaneously. Alternatively, command `docker-compose up --d` is also helpful if users want to use without printing any execution logs.
+
+When getting done in testing with two images, execute `docker-compose down`.
+
+## 3) Serverless
 
 After getting `lambda_function.py` ready for deployment, we use docker to contain the file along with tflite model.
 
@@ -108,118 +216,23 @@ This image has been available in [docker hub](https://hub.docker.com/r/21492rar/
 
     - Put the same url to `Request Body` and test:
 
-    ```{
+    ```
+    {
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Wood_Duck_%28Aix_sponsa%29.jpg"
     }
     ```
     
     The result should look like this: 
+
     ![images](images/gatewayAPI_test.png)
 
     - Deploy API: copy the generated/invoked URL and paste it to `test_efficient-net-serving.py` as `url`.
+    
     ![images](images/gatewayAPI_deploy.png)
 
     - Test with python `python test_serverless.py`
 
-#### Conversion to SavedModel
 
-Start with command `ipython`. Interactive python is launched.
-
-Then, write and enter each line:
-
-```
-import tensorflow as tf
-from tensorflow import keras
-
-model_seq = keras.models.load_model('./model_seq.h5')
-tf.saved_model.save(model_seq, 'seq-model-dir')
-
-model_eff_net = keras.models.load_model('./model_efficient_net.h5')
-tf.saved_model.save(model_eff_net, 'efficient-net-dir')
-```
-
-Tree structure of SavedModel deep learnings should be shown as below:
-
-![images](images/saved_model_eff-net.png)
-
-Retrieve signature definition of `efficient-net-dir `. We will use them later.
-
-```
-saved_model cli show --dir efficient-net-dir 
-```
-
-Information of inputs and outputs TensorInfo:
-
-```
-The given SavedModel SignatureDef contains the following input(s):
-  inputs['input_23'] tensor_info:
-      dtype: DT_FLOAT
-      shape: (-1, 260, 260, 3)
-      name: serving_default_input_23:0
-The given SavedModel SignatureDef contains the following output(s):
-  outputs['pred'] tensor_info:
-      dtype: DT_FLOAT
-      shape: (-1, 3)
-      name: StatefulPartitionedCall:0
-Method name is: tensorflow/serving/predict
-
-```
-
-Use this information for building model serving functions specified in a program `gateway-efficient-net.py`
-
-#### TF-Serving
-
-#### Sequential model (using feature extraction from VGG16)
-
-```
-docker run -it --rm -p 8500:8500 -v "$(pwd)/seq-model-dir:/models/sequential/1" -e MODEL_NAME="sequential" tensorflow/serving:2.7.0
-```
-
-Here is a screenshot of starting tf-serving with Docker in Ubuntu:
-
-![images](images/run_tf-serving-docker_ubuntu.png)
-
-Then, you can give it a try predicting an image example by running command cells in jupyter notebook `tf-serving-connect-sequential-model.ipynb`.
-
-#### EfficientNet model
-
-```
-docker run -it --rm -p 8500:8500 -v "$(pwd)/efficient-net-dir:/models/eff-net/1" -e MODEL_NAME="eff-net" tensorflow/serving:2.7.0
-```
-
-![images](images/run_tf-serving-docker-eff-net_ubuntu.png)
-
-Variable of `host`, `channel`, and `stub` in `tf-serving-connect-sequential-model.ipynb` must be updated so that its prediction service can receive model serving delivered from running docker.
-
-#### Testing Gateway in Flask App
-
-A python script is used to run a flask app acting as "Gateway" for receiving `host` and `channel` from running docker and an input image, and it is executed in the Pipenv environment.
-
-    1) Create a new bash tab and activate Pipenv with `pipenv shell`.
-    2) Confirm that a running docker, which hosting efficient net model serving, remains active.
-    3) Start flask app with command `python gateway_efficient_net.py`. 
-    4) Create a new bash tab and execute `test_efficient-net-serving.py` and wait its prediction to come out.
-    5) You can try predicting other images listed in `list_urls_bird.txt` by replacing `url`s value in `test_efficient-net-serving.py` and re-run it.
-
-#### Docker-compose
-
-To make model serving and gateway easier to manage and maintain, we take a step-up on docker by defining iamges using these files: `image-gateway.dockerfile` and `image-model.dockerfile`. 
-
-Building a docker image (note that the directory `efficient-net-dir` is a subdirectory from `sequentials`)
-
-```
-docker build -t zoomcamp-eff-net:eff-net-v1  -f image-model.dockerfile .
-```
-
-Do the same with gateway:
-
-```
-docker build -t gateway-eff-net:eff-net-v1  -f image-gateway.dockerfile .
-```
-
-As there are two images, we want to see that two different dockers can interact with each other within the same network group. Images built using two dockerfiles as covered above are then put together into a single large package: `docker-compose.yaml`.
-
-Command `docker-compose up` will start up gateway and model serving images simultaneously.
 
 
 ### Kubernetes
@@ -241,4 +254,4 @@ Alternatively, you can also the interactive way to
     - `docker pull 21492rar/bird-image-classification:gradio-effnet`
 
 2) HuggingFace
-This portal offers compaibility with gradio. As I choose for free hosting, just expect a slow inference when playing around with this app
+This portal offers compaibility with gradio. As I choose for free hosting, just expect a slow inference when playing around with this app.
