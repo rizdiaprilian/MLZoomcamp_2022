@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tf-serve-bird
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tf-serve-bird
+  template:
+    metadata:
+      labels:
+        app: tf-serve-bird
+    spec:
+      containers:
+      - name: tf-serve-bird
+        image: zoomcamp-eff-net:eff-net-v1
+        # image: 071714138980.dkr.ecr.eu-west-2.amazonaws.com/efficient-net-eks:zoomcamp-eff-net-eff-net-v1
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "1"
+        ports:
+        - containerPort: 8500
+

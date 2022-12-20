@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-serve
+spec:
+  type: LoadBalancer  # External service to communicate with client (i.e., LoadBalancer)
+  selector:
+    app: gateway-serve
+  ports:
+  - port: 80
+    targetPort: 9696
