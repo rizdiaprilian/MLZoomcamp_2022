@@ -319,15 +319,3 @@ kubectl apply -f gateway-service.yaml
 - Test it: `python gateway_efficient_net.py` and `python test_efficient-net-serving.py`. Remind that information of `EXTERNAL-IP` of load balancer must be set for `url` when testing gateway service.  
 
 After getting done with this, just delete EKS cluster : `eksctl delete cluster --name efficient-net-eks`
-
-### Gradio
-
-Alternatively, you can also the interactive way to 
-
-1) Download from docker hub and run image
-
-    - `docker pull 21492rar/bird-image-classification:serverless-bird`
-    - `docker pull 21492rar/bird-image-classification:gradio-effnet`
-
-2) HuggingFace
-This portal offers compaibility with gradio. As I choose for free hosting, just expect a slow inference when playing around with this app.
