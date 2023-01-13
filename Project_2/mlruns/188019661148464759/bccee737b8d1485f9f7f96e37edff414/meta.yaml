@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/bccee737b8d1485f9f7f96e37edff414/artifacts
+deleted_time: 1673386747121
+end_time: 1673386581514
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: bccee737b8d1485f9f7f96e37edff414
+run_name: valuable-roo-655
+run_uuid: bccee737b8d1485f9f7f96e37edff414
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673386578480
+status: 3
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/995722a8f33c4eb0b0af2d7ac63cda88/artifacts
+deleted_time: 1673527693174
+end_time: 1673378472261
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 995722a8f33c4eb0b0af2d7ac63cda88
+run_name: redolent-lynx-895
+run_uuid: 995722a8f33c4eb0b0af2d7ac63cda88
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673378472153
+status: 3
+tags: []
+user_id: rizdi

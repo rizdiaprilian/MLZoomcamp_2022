@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/1782efa0bd0f464c9a789ac55456ff17/artifacts
+end_time: 1673527558648
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: 1782efa0bd0f464c9a789ac55456ff17
+run_name: merciful-calf-88
+run_uuid: 1782efa0bd0f464c9a789ac55456ff17
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673527553504
+status: 3
+tags: []
+user_id: rizdi

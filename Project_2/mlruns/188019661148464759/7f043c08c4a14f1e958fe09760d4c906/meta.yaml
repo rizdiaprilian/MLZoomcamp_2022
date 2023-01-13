@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/7f043c08c4a14f1e958fe09760d4c906/artifacts
+deleted_time: 1673386275153
+end_time: 1673384749249
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 7f043c08c4a14f1e958fe09760d4c906
+run_name: able-rook-962
+run_uuid: 7f043c08c4a14f1e958fe09760d4c906
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673384749146
+status: 4
+tags: []
+user_id: rizdi

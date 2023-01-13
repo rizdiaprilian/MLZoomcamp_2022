@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/48763e10e35549758cfc085e9f649b1c/artifacts
+deleted_time: 1673378525089
+end_time: 1673378509336
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 48763e10e35549758cfc085e9f649b1c
+run_name: clumsy-vole-568
+run_uuid: 48763e10e35549758cfc085e9f649b1c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673378509283
+status: 4
+tags: []
+user_id: rizdi

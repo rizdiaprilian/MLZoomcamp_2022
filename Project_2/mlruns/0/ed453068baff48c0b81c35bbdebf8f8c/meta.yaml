@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/0/ed453068baff48c0b81c35bbdebf8f8c/artifacts
+deleted_time: 1673378250187
+end_time: 1673377919664
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: ed453068baff48c0b81c35bbdebf8f8c
+run_name: luminous-eel-314
+run_uuid: ed453068baff48c0b81c35bbdebf8f8c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673377913247
+status: 4
+tags: []
+user_id: rizdi

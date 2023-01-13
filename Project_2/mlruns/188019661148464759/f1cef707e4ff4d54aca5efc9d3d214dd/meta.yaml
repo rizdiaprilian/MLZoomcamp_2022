@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/f1cef707e4ff4d54aca5efc9d3d214dd/artifacts
+end_time: 1673527653670
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: f1cef707e4ff4d54aca5efc9d3d214dd
+run_name: omniscient-bass-353
+run_uuid: f1cef707e4ff4d54aca5efc9d3d214dd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673527649855
+status: 3
+tags: []
+user_id: rizdi

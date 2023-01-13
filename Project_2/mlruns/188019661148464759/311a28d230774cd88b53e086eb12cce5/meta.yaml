@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/311a28d230774cd88b53e086eb12cce5/artifacts
+deleted_time: 1673386275232
+end_time: 1673385721427
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 311a28d230774cd88b53e086eb12cce5
+run_name: nebulous-zebra-750
+run_uuid: 311a28d230774cd88b53e086eb12cce5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673385721298
+status: 4
+tags: []
+user_id: rizdi

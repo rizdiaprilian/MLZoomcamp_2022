@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/6867d2d194a94aadba6967dd1716ae8e/artifacts
+deleted_time: 1673386712710
+end_time: 1673386660359
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 6867d2d194a94aadba6967dd1716ae8e
+run_name: amazing-deer-845
+run_uuid: 6867d2d194a94aadba6967dd1716ae8e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673386657299
+status: 3
+tags: []
+user_id: rizdi

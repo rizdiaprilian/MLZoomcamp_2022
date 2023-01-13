@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/ac689ae58cf0433f9758204e4df6e6ab/artifacts
+deleted_time: 1673453803425
+end_time: 1673452998616
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: ac689ae58cf0433f9758204e4df6e6ab
+run_name: sneaky-fowl-919
+run_uuid: ac689ae58cf0433f9758204e4df6e6ab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673452998440
+status: 3
+tags: []
+user_id: rizdi

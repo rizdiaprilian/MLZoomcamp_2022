@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/07f5e30bf35743f8bf73e0d98e896de7/artifacts
+end_time: 1673555119317
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: 07f5e30bf35743f8bf73e0d98e896de7
+run_name: worried-smelt-54
+run_uuid: 07f5e30bf35743f8bf73e0d98e896de7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673555119129
+status: 3
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/08ec499264a3417e8262117413a7cddc/artifacts
+deleted_time: 1673452415789
+end_time: 1673452307383
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 08ec499264a3417e8262117413a7cddc
+run_name: silent-snail-252
+run_uuid: 08ec499264a3417e8262117413a7cddc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673452307164
+status: 4
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/b7797d7691a3447fb6dde0185358520b/artifacts
+deleted_time: 1673527693093
+end_time: 1673454414012
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: b7797d7691a3447fb6dde0185358520b
+run_name: kindly-cow-343
+run_uuid: b7797d7691a3447fb6dde0185358520b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673454409284
+status: 3
+tags: []
+user_id: rizdi

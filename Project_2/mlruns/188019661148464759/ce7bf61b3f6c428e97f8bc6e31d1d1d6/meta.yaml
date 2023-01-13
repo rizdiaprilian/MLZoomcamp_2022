@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/ce7bf61b3f6c428e97f8bc6e31d1d1d6/artifacts
+deleted_time: 1673384319078
+end_time: 1673384146001
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: ce7bf61b3f6c428e97f8bc6e31d1d1d6
+run_name: sassy-grouse-741
+run_uuid: ce7bf61b3f6c428e97f8bc6e31d1d1d6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673384145915
+status: 4
+tags: []
+user_id: rizdi

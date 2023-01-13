@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/34459483327744afbc887600e75c8dcb/artifacts
+deleted_time: 1673454362629
+end_time: 1673454279892
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 34459483327744afbc887600e75c8dcb
+run_name: brawny-squirrel-498
+run_uuid: 34459483327744afbc887600e75c8dcb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673454277121
+status: 3
+tags: []
+user_id: rizdi

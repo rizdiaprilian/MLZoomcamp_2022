@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/453182df36b34bae86fc13425b632840/artifacts
+deleted_time: 1673454935133
+end_time: 1673454900705
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 453182df36b34bae86fc13425b632840
+run_name: rumbling-deer-19
+run_uuid: 453182df36b34bae86fc13425b632840
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673454896246
+status: 4
+tags: []
+user_id: rizdi

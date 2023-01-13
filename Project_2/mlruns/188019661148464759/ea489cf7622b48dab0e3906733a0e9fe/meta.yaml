@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/ea489cf7622b48dab0e3906733a0e9fe/artifacts
+deleted_time: 1673527693128
+end_time: 1673455318274
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: ea489cf7622b48dab0e3906733a0e9fe
+run_name: zealous-ram-370
+run_uuid: ea489cf7622b48dab0e3906733a0e9fe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673455315005
+status: 3
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/3a7a9e5b14c74f04a06b4af0e6622ed5/artifacts
+deleted_time: 1673555137669
+end_time: 1673554421952
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 3a7a9e5b14c74f04a06b4af0e6622ed5
+run_name: skittish-kite-400
+run_uuid: 3a7a9e5b14c74f04a06b4af0e6622ed5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673554392462
+status: 4
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/7287a0def3484b698f88a1d5b991db10/artifacts
+deleted_time: 1673384319086
+end_time: 1673384271081
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 7287a0def3484b698f88a1d5b991db10
+run_name: worried-hare-594
+run_uuid: 7287a0def3484b698f88a1d5b991db10
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673384270983
+status: 4
+tags: []
+user_id: rizdi

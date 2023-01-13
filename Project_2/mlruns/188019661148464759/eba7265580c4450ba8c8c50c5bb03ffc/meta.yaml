@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/eba7265580c4450ba8c8c50c5bb03ffc/artifacts
+deleted_time: 1673454362620
+end_time: 1673454327453
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: eba7265580c4450ba8c8c50c5bb03ffc
+run_name: selective-asp-239
+run_uuid: eba7265580c4450ba8c8c50c5bb03ffc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673454322927
+status: 3
+tags: []
+user_id: rizdi

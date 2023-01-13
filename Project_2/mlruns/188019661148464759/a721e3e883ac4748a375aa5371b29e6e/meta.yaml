@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/a721e3e883ac4748a375aa5371b29e6e/artifacts
+deleted_time: 1673555468272
+end_time: 1673555319822
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: a721e3e883ac4748a375aa5371b29e6e
+run_name: masked-skunk-288
+run_uuid: a721e3e883ac4748a375aa5371b29e6e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673555291893
+status: 4
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/7d041dd899894a85bfd20178e3ecaee0/artifacts
+deleted_time: 1673386275238
+end_time: 1673386041064
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 7d041dd899894a85bfd20178e3ecaee0
+run_name: respected-seal-837
+run_uuid: 7d041dd899894a85bfd20178e3ecaee0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673386040932
+status: 4
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/c2bd15bbe03040399c4ff245c31f44dd/artifacts
+deleted_time: 1673555137669
+end_time: 1673555024263
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: c2bd15bbe03040399c4ff245c31f44dd
+run_name: suave-tern-481
+run_uuid: c2bd15bbe03040399c4ff245c31f44dd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673555024180
+status: 4
+tags: []
+user_id: rizdi

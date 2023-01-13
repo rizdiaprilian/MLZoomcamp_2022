@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/8363ca82856f4e52b1c5e7f2c917cbf4/artifacts
+deleted_time: 1673527693104
+end_time: 1673454806164
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 8363ca82856f4e52b1c5e7f2c917cbf4
+run_name: wise-vole-639
+run_uuid: 8363ca82856f4e52b1c5e7f2c917cbf4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673454803142
+status: 3
+tags: []
+user_id: rizdi

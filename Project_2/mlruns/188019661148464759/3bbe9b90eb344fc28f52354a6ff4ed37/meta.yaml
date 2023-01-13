@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/3bbe9b90eb344fc28f52354a6ff4ed37/artifacts
+end_time: 1673557338318
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: 3bbe9b90eb344fc28f52354a6ff4ed37
+run_name: rare-stoat-764
+run_uuid: 3bbe9b90eb344fc28f52354a6ff4ed37
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673557305846
+status: 3
+tags: []
+user_id: rizdi

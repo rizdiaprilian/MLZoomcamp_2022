@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/c2b9d72a649f4dd78a1153d8dece864e/artifacts
+deleted_time: 1673527693141
+end_time: 1673386801996
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: c2b9d72a649f4dd78a1153d8dece864e
+run_name: welcoming-owl-720
+run_uuid: c2b9d72a649f4dd78a1153d8dece864e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673386798645
+status: 3
+tags: []
+user_id: rizdi

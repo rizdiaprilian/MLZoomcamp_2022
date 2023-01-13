@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/d8ee8527178f4d98a665ace8bcc19562/artifacts
+deleted_time: 1673386597687
+end_time: 1673386258380
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: d8ee8527178f4d98a665ace8bcc19562
+run_name: unequaled-crab-63
+run_uuid: d8ee8527178f4d98a665ace8bcc19562
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673386256829
+status: 3
+tags: []
+user_id: rizdi

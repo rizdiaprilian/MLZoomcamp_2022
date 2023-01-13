@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/5f6623874149476fad78e8da4a32dadd/artifacts
+deleted_time: 1673527693160
+end_time: 1673386777254
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 5f6623874149476fad78e8da4a32dadd
+run_name: big-donkey-389
+run_uuid: 5f6623874149476fad78e8da4a32dadd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673386774245
+status: 3
+tags: []
+user_id: rizdi

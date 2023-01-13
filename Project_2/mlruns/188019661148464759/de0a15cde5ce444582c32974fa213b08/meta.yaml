@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/de0a15cde5ce444582c32974fa213b08/artifacts
+deleted_time: 1673527693074
+end_time: 1673452405658
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: de0a15cde5ce444582c32974fa213b08
+run_name: big-penguin-212
+run_uuid: de0a15cde5ce444582c32974fa213b08
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673452405539
+status: 3
+tags: []
+user_id: rizdi

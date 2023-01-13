@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/e55238d4e1d24a9f9ba96c9a95bf3e71/artifacts
+end_time: 1673555867510
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: e55238d4e1d24a9f9ba96c9a95bf3e71
+run_name: glamorous-horse-857
+run_uuid: e55238d4e1d24a9f9ba96c9a95bf3e71
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673555840261
+status: 3
+tags: []
+user_id: rizdi

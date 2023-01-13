@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/249646349f9b4489a2d068128c646ee6/artifacts
+deleted_time: 1673386597686
+end_time: 1673386397677
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 249646349f9b4489a2d068128c646ee6
+run_name: brawny-smelt-271
+run_uuid: 249646349f9b4489a2d068128c646ee6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673386394643
+status: 3
+tags: []
+user_id: rizdi

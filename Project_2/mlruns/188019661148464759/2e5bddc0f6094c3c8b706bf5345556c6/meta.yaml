@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/2e5bddc0f6094c3c8b706bf5345556c6/artifacts
+end_time: 1673556260964
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: 2e5bddc0f6094c3c8b706bf5345556c6
+run_name: powerful-worm-774
+run_uuid: 2e5bddc0f6094c3c8b706bf5345556c6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673556190496
+status: 3
+tags: []
+user_id: rizdi

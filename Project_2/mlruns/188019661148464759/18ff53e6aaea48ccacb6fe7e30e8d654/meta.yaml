@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/18ff53e6aaea48ccacb6fe7e30e8d654/artifacts
+deleted_time: 1673386275213
+end_time: 1673385433929
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 18ff53e6aaea48ccacb6fe7e30e8d654
+run_name: popular-dove-707
+run_uuid: 18ff53e6aaea48ccacb6fe7e30e8d654
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673385433719
+status: 4
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/b6adb10d241547af922f05ecf93b447a/artifacts
+deleted_time: 1673453798566
+end_time: 1673453480856
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: b6adb10d241547af922f05ecf93b447a
+run_name: marvelous-ram-739
+run_uuid: b6adb10d241547af922f05ecf93b447a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673453480781
+status: 4
+tags: []
+user_id: rizdi

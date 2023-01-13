@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/0afea94e5f244462a9657a43d1a3af76/artifacts
+deleted_time: 1673454362630
+end_time: 1673454353067
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 0afea94e5f244462a9657a43d1a3af76
+run_name: powerful-ant-287
+run_uuid: 0afea94e5f244462a9657a43d1a3af76
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673454348561
+status: 3
+tags: []
+user_id: rizdi

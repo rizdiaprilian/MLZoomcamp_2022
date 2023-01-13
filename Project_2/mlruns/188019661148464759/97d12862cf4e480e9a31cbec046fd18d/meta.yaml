@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/97d12862cf4e480e9a31cbec046fd18d/artifacts
+deleted_time: 1673555137685
+end_time: 1673554677224
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 97d12862cf4e480e9a31cbec046fd18d
+run_name: painted-carp-36
+run_uuid: 97d12862cf4e480e9a31cbec046fd18d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673554677125
+status: 4
+tags: []
+user_id: rizdi

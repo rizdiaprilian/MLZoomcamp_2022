@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/967a677a2295473dbf49fcdfcffc106b/artifacts
+deleted_time: 1673527693164
+end_time: 1673386702568
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 967a677a2295473dbf49fcdfcffc106b
+run_name: debonair-penguin-311
+run_uuid: 967a677a2295473dbf49fcdfcffc106b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673386699429
+status: 3
+tags: []
+user_id: rizdi
