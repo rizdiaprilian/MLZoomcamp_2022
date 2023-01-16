@@ -23,6 +23,7 @@ Information about internet retail sales are available from portal [Office for Na
 
 - `readme.md`: A full description of the project for reader to gain a greater picture of this project.
 - `internet_sales.csv`: A csv file that holds information about montly sales of internet retails.
+- `internet_sales_UK_preprocessed.csv`: A csv file that holds information about montly sales of internet retails plus newly created extracted features.
 - `EDA_and_feature_engineering.ipynb` : A jupyter notebook that covers steps from EDA to feature engineering.
 - `Forecasting_internet_sales.ipynb` : A jupyter notebook that covers experiments of various forecasting models.
 - `HyperOpt_tuning.ipynb` : A jupyter notebook that covers hyperparameter optimization to find parameters that return a global minima for forecasting models.
@@ -64,14 +65,22 @@ RandomForest     |   |    |     |    |    |
 
 ### HyperParameter Tuning
 
+Finding the possible hyperparameters that return the optimum performace is the task that many engineers or scientists take time and effort on (besides of data wrangling/preprocessing or even feature engineering). Thankfully, MLFlow and HyperOpt are available that bring relevant answers to this issue, allowing them to have take much better control of managing machine learning lifecycle. API modules of MLFlow provide an API for enabling and configuring logging from various models to MLFlow as well as loading models to be reproduced in different environments.
 
-### Building BentoML
+To run mlflow in the browser:
 
+`mlflow server --backend-store-uri file:///D:/github_repos/mlzoomcamp/MLZoomcamp_2022/Project_2/mlruns --no-serve-artifacts`
+
+Below shown a screening of MLFlow UI which successfully run in the browser: 
+
+![images](images/MLFlow1.png)
+
+![images](images/MLFlow2.png)
 
 ### Deployment 
 
 
-#### 1) Local (FastAPI)
+#### 1) Streamlit Web App
 
 
 #### 2) AWS Lambda/Kubernetes
