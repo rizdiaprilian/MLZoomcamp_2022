@@ -45,27 +45,21 @@ This project used three different environments, with most of parts were done in 
 
 ### Experiment Results
 
-+------+-------------------+---------------+---------------+
-|  Model   | MAPE   |  RMSE  | MSE  | R-squared  |  Variance explained |
-+------+-------------------+---------------+---------------+
-|  Lasso   |   |    |     |    |    |
-+------+-------------------+---------------+---------------+
-Ridge     |   |    |     |    |    |
-+------+-------------------+---------------+---------------+
-ARIMA     |   |    |     |    |    |
-+------+-------------------+---------------+---------------+
-Exponential Smoothing (Holt-Winters)     |   |    |     |    |    |
-+------+-------------------+---------------+---------------+
-LGBM     |   |    |     |    |    |
-+------+-------------------+---------------+---------------+
-XGBoost     |   |    |     |    |    |
-+------+-------------------+---------------+---------------+
-RandomForest     |   |    |     |    |    |
-+------+-------------------+---------------+---------------+
+
+|  Model   | MAE |  MAPE   |  MSE  | RMSE  | R-squared  |  Variance explained |
+| ------- | ------ | ------- | ------ | ------- | ------ | ------- |
+|  Lasso   |  6.509 | 4.292   | 86.755  | 9.314   |  0.907  | 0.907 |
+|  Ridge     | 12.547  |  8.171 |  242.920   | 15.586   | 0.740   |  0.750  |
+|  ARIMA     |   |    |     |    |    |  |
+|  Exponential Smoothing (Holt-Winters)     |   |    |     |    |    |   |
+|  LGBM     |   |    |     |    |    |    |
+|  XGBoost     |   |    |     |    |    |    |
+|  RandomForest     |   |    |     |    |    |    |
+
 
 ### HyperParameter Tuning
 
-Finding the possible hyperparameters that return the optimum performace is the task that many engineers or scientists take time and effort on (besides of data wrangling/preprocessing or even feature engineering). Thankfully, MLFlow and HyperOpt are available that bring relevant answers to this issue, allowing them to have take much better control of managing machine learning lifecycle. API modules of MLFlow provide an API for enabling and configuring logging from various models to MLFlow as well as loading models to be reproduced in different environments.
+Finding the possible hyperparameters that return the optimum performace is the task that many engineers or scientists take time and effort on (besides of data wrangling/preprocessing or even feature engineering). Thankfully, MLFlow and HyperOpt are available that bring relevant answers to this issue, allowing them to have take much better accountability and control of managing machine learning lifecycle. API modules of MLFlow provide an API for enabling and configuring logging from various models to MLFlow as well as loading models to be reproduced in different environments.
 
 To run mlflow in the browser:
 
@@ -82,6 +76,7 @@ Below shown a screening of MLFlow UI which successfully run in the browser:
 
 #### 1) Streamlit Web App
 
+You can view the demonstration of forecasting with Streamlit here: https://rizdiaprilian-forecasting-app-pred-app-ueqjjl.streamlit.app/
 
 #### 2) AWS Lambda/Kubernetes
 
