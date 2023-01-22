@@ -7,11 +7,11 @@ A third project of MLZoomcamp. This repo is served with purpose of presenting wh
 
 This project will see how machine learning can help solve the problem on real case in the UK: internet retail market. 
 
-What would be used here is a dataset consisted of monthly sales and price throughout period 2009-2022. At initial step, we will go through assumption testing whether the time series is stationary or not. Then feature engineering would follow right after getting done with analysis and this step is helpful for machine learning to improve prediction. Models for experimenting are naive prediction using feature engineering, randomforest regressor, lasso regression, ridge regression, xgboost, lgbm, ARIMA, and Exponential Smoothing Holt-Winters. It is my intention to implement what I have recently been learning on making models with library `statsmodels`. 
+What would be used here is a dataset consisted of monthly sales and price throughout period 2009-2022. At initial step, we will go through assumption testing whether the time series is stationary or not. Then feature engineering would follow right after getting done with analysis and this step is helpful for machine learning to improve prediction. To obtain objective differentiations when experimenting, both models from library `scikit-learn` and `statsmodels` are called and used here: lasso regression, ridge regression, ARIMA, and Exponential Smoothing Holt-Winters. It is my intention to implement what I have recently been learning on making models with library `statsmodels`. 
 
 If you explore codes, some of codes were adopted from book `Machine Learning Engineering in Action` by Ben Wilson, though that these implementations are in much simpler form to the original ones. Hence, I would like to give credit to him for insightful lessons of building MVP with right approaches and mindsets. 
 
-Deployment would be set in two settings: local and cloud.
+The hosting of forecast would be arranged and executef in Streamlit cloud. Streamlit is an open-source service that offers wide range of building data app to enhance information transfer by turning python scripts into shareable applications in minutes.  
 
 ### Data
 
@@ -46,15 +46,12 @@ This project used three different environments, with most of parts were done in 
 ### Experiment Results
 
 
-|  Model   | MAE |  MAPE   |  MSE  | RMSE  | R-squared  |  Variance explained |
-| ------- | ------ | ------- | ------ | ------- | ------ | ------- |
-|  Lasso   |  6.509 | 4.292   | 86.755  | 9.314   |  0.907  | 0.907 |
-|  Ridge     | 12.547  |  8.171 |  242.920   | 15.586   | 0.740   |  0.750  |
-|  ARIMA     |   |    |     |    |    |  |
-|  Exponential Smoothing (Holt-Winters)     |   |    |     |    |    |   |
-|  LGBM     |   |    |     |    |    |    |
-|  XGBoost     |   |    |     |    |    |    |
-|  RandomForest     |   |    |     |    |    |    |
+|  Model   | MAE |  MAPE   |  MSE  | RMSE  | R-squared  |  Variance explained |  AIC   |  BIC  |
+| ------- | ------ | ------- | ------ | ------- | ------ | ------- | ------ | ------- |
+|  Lasso   |  6.144 | 4.071  | 79.63 | 8.924   |  0.915  | 0.915 | N/A | N/A |
+|  Ridge     | 12.55 |  8.171 |  242.9   | 15.59  | 0.740   |  0.750  | N/A | N/A |
+|  Exponential Smoothing (Holt-Winters)     |  18.64 |  12.44  | 507.2    |  22.52  |   0.457 |  0.47 |  310.8   |  327.4  |
+|  ARIMA |  19.86   |  12.31 |  739  |  27.19   |  0.209  |  0.463  | 0.463  |  318.5  | 325.9 |
 
 
 ### HyperParameter Tuning
@@ -74,10 +71,8 @@ Below shown a screening of MLFlow UI which successfully run in the browser:
 ### Deployment 
 
 
-#### 1) Streamlit Web App
+#### Streamlit Web App
 
 You can view the demonstration of forecasting with Streamlit here: https://rizdiaprilian-forecasting-app-pred-app-ueqjjl.streamlit.app/
-
-#### 2) AWS Lambda/Kubernetes
 
 

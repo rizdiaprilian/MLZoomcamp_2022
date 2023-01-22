@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/653c71be4399460e8d78c99e69bfd8b9/artifacts
+end_time: 1674403928797
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: 653c71be4399460e8d78c99e69bfd8b9
+run_name: industrious-mare-57
+run_uuid: 653c71be4399460e8d78c99e69bfd8b9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1674403912862
+status: 3
+tags: []
+user_id: rizdi

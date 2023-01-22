@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/f072225364e6482daa24608c6626d12b/artifacts
+end_time: 1673995206231
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: f072225364e6482daa24608c6626d12b
+run_name: blushing-mole-560
+run_uuid: f072225364e6482daa24608c6626d12b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673995203378
+status: 3
+tags: []
+user_id: rizdi

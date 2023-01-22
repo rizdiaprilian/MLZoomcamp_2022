@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/4dce9a1f2819481e983553b5a95c32cc/artifacts
+deleted_time: 1673994045841
+end_time: 1673993885998
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 4dce9a1f2819481e983553b5a95c32cc
+run_name: melodic-snake-789
+run_uuid: 4dce9a1f2819481e983553b5a95c32cc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673993883221
+status: 4
+tags: []
+user_id: rizdi

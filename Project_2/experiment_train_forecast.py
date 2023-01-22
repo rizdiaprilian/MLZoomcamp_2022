@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.model_selection import cross_val_score
-from sklearn.linear_model import Lasso, RidgeCV
+from sklearn.linear_model import Lasso, Ridge
 from sklearn.metrics import mean_squared_error
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
@@ -16,6 +16,7 @@ from statsmodels.tsa.stattools import adfuller
 
 import mlflow
 import mlflow.sklearn
+import hyperopt
 from hyperopt import STATUS_OK, Trials, fmin, hp, tpe
 
 plt.style.use('fivethirtyeight')
@@ -115,28 +116,21 @@ def calculate_errors(y_true, y_pred):
     return error_scores
 
 
-
-def lasso_linear(params, *data):
-    X_train, y_train = data
-
-    # params: alpha, tol
-    params = {
-              'alpha': params['alpha'], 
-             'tol': params['tol']
-             }
-    # params = {'alpha': 0.3, 'tol': 0.001}
-    linear_model = Lasso(**params)
-    linear_model.fit(X_train, y_train)
-
-    return linear_model
-
 def objective(params):
-    params = {
-              'alpha': params['alpha'], 
-             'tol': params['tol']
-             }
+    # params = {
+    #           'alpha': params['alpha'], 
+    #          'tol': params['tol']
+    #          }
 
-    lr = Lasso(**params)
+    # lr = Lasso(**params)
+
+    params = {
+                'alpha': params['alpha'], 
+                'solver': params['solver'],
+                'tol': params['tol'],
+                'fit_intercept': params['fit_intercept']
+             }
+    lr = Ridge(**params)
     score = cross_val_score(lr, X_train, y_train,
             scoring="r2", cv=5).mean()
 
@@ -173,17 +167,6 @@ def arima_(train, test):
 
     return model_fit
 
-# #### Ridge Regression
-
-def ridge_regression(params, data):
-    ridge = RidgeCV(
-            # alphas=[0.1, 0.5, 0.7, 0.95, 1.0, 10.0],
-            # fit_intercept=False,
-            # gcv_mode='auto' 
-            **params
-        ).fit(X_train, y_train)
-
-    return ridge
 
 if __name__ == "__main__":
     # warnings.filterwarnings("ignore")
@@ -193,9 +176,18 @@ if __name__ == "__main__":
 
     X_train, y_train, X_test, y_test = splitting_data(data, date)
     
+    ### Lasso search space
+    # search_space = {   
+    #     'alpha': hp.uniform("alpha", 0.1, 0.9),
+    #     'tol': hp.uniform("tol", 0.0001, 0.001),
+    # }
+
+    ### Ridge search space
     search_space = {   
-        'alpha': hp.uniform("alpha", 0.1, 0.9),
-        'tol': hp.uniform("tol", 0.0001, 0.001),
+        'alpha': hp.uniform("alpha", 0.0001, 0.1),
+        'solver': hp.choice("solver", ["svd", "cholesky", "lsqr", "sparse_cg", "sag", "saga", "auto"]),
+        'tol': hp.uniform("tol", 0.0001, 0.1),
+        'fit_intercept': hp.choice('fit_intercept', [True, False]),
     }
 
     mlflow.set_experiment("internet_sales_index")
@@ -208,13 +200,25 @@ if __name__ == "__main__":
                 trials=Trials(),
                 max_evals=70)
 
-        mlflow.log_param("alpha", best_result['alpha'])
-        mlflow.log_param("tol", best_result['tol'])
+        # mlflow.log_param("alpha", best_result['alpha'])
+        # mlflow.log_param("tol", best_result['tol'])
 
-        # lassomodel = lasso_linear(best_result, X_train, y_train)
-        lassomodel = Lasso(**best_result)
-        lassomodel.fit(X_train, y_train)
-        y_pred = lassomodel.predict(X_test)
+        # lassomodel = Lasso(**best_result)
+        # lassomodel.fit(X_train, y_train)
+        # y_pred = lassomodel.predict(X_test)
+
+        mlflow.log_param("alpha", best_result['alpha'])
+        mlflow.log_param("solver", best_result['solver'])
+        mlflow.log_param("tol", best_result['tol'])
+        mlflow.log_param("fit_intercept", best_result['fit_intercept'])
+
+
+        best_result_ridge = hyperopt.space_eval(search_space, best_result)
+        ridgemodel = Ridge(**best_result_ridge)
+        ridgemodel.fit(X_train, y_train)
+        y_pred = ridgemodel.predict(X_test)
+
+        ### Calculate regression
         error_scores = calculate_errors(y_test, y_pred)
 
         mlflow.log_metric("mae", error_scores['mae'])

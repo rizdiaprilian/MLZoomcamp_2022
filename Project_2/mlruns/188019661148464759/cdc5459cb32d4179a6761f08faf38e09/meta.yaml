@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/cdc5459cb32d4179a6761f08faf38e09/artifacts
+deleted_time: 1673994742585
+end_time: 1673994596429
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: cdc5459cb32d4179a6761f08faf38e09
+run_name: amazing-elk-873
+run_uuid: cdc5459cb32d4179a6761f08faf38e09
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994596329
+status: 4
+tags: []
+user_id: rizdi

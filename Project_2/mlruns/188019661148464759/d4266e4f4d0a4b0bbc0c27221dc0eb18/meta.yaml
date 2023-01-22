@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/d4266e4f4d0a4b0bbc0c27221dc0eb18/artifacts
+deleted_time: 1673994742597
+end_time: 1673994582906
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: d4266e4f4d0a4b0bbc0c27221dc0eb18
+run_name: loud-skink-98
+run_uuid: d4266e4f4d0a4b0bbc0c27221dc0eb18
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994582773
+status: 4
+tags: []
+user_id: rizdi

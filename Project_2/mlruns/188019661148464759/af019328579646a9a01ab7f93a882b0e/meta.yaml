@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/af019328579646a9a01ab7f93a882b0e/artifacts
+end_time: 1673995053973
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: af019328579646a9a01ab7f93a882b0e
+run_name: smiling-fox-571
+run_uuid: af019328579646a9a01ab7f93a882b0e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673995051043
+status: 3
+tags: []
+user_id: rizdi

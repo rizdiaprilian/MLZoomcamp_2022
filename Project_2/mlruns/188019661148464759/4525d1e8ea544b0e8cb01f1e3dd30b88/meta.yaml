@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/4525d1e8ea544b0e8cb01f1e3dd30b88/artifacts
+deleted_time: 1673994045888
+end_time: 1673993472291
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 4525d1e8ea544b0e8cb01f1e3dd30b88
+run_name: adaptable-calf-936
+run_uuid: 4525d1e8ea544b0e8cb01f1e3dd30b88
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673993469237
+status: 4
+tags: []
+user_id: rizdi

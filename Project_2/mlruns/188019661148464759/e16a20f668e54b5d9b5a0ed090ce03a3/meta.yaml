@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/e16a20f668e54b5d9b5a0ed090ce03a3/artifacts
+deleted_time: 1673994045867
+end_time: 1673993791338
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: e16a20f668e54b5d9b5a0ed090ce03a3
+run_name: stylish-doe-309
+run_uuid: e16a20f668e54b5d9b5a0ed090ce03a3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673993788417
+status: 4
+tags: []
+user_id: rizdi

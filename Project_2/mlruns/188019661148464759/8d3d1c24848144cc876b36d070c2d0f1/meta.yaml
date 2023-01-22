@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/8d3d1c24848144cc876b36d070c2d0f1/artifacts
+end_time: 1673995150196
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: 8d3d1c24848144cc876b36d070c2d0f1
+run_name: honorable-colt-738
+run_uuid: 8d3d1c24848144cc876b36d070c2d0f1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673995147209
+status: 3
+tags: []
+user_id: rizdi

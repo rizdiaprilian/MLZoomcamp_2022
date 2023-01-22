@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/c2497a2adfdf4193b27242aee9d0850d/artifacts
+deleted_time: 1674403941245
+end_time: 1674403897811
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: c2497a2adfdf4193b27242aee9d0850d
+run_name: loud-conch-877
+run_uuid: c2497a2adfdf4193b27242aee9d0850d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1674403883101
+status: 4
+tags: []
+user_id: rizdi

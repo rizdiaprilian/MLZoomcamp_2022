@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/d33e9e2012b94da98b566476a2f4ecac/artifacts
+deleted_time: 1673994742548
+end_time: 1673994649917
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: d33e9e2012b94da98b566476a2f4ecac
+run_name: powerful-shrew-570
+run_uuid: d33e9e2012b94da98b566476a2f4ecac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994646864
+status: 4
+tags: []
+user_id: rizdi

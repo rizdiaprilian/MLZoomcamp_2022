@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/69df58cc0a91446eb090502d304193c2/artifacts
+deleted_time: 1673994045883
+end_time: 1673993573776
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 69df58cc0a91446eb090502d304193c2
+run_name: aged-sloth-938
+run_uuid: 69df58cc0a91446eb090502d304193c2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673993573276
+status: 4
+tags: []
+user_id: rizdi

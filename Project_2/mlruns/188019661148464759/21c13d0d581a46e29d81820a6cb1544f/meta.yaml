@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/21c13d0d581a46e29d81820a6cb1544f/artifacts
+deleted_time: 1673994751356
+end_time: 1673994334117
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 21c13d0d581a46e29d81820a6cb1544f
+run_name: classy-shoat-407
+run_uuid: 21c13d0d581a46e29d81820a6cb1544f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994331058
+status: 4
+tags: []
+user_id: rizdi

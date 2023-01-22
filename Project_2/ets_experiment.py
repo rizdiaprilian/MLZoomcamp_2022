@@ -10,11 +10,12 @@ from sklearn.metrics import explained_variance_score, mean_absolute_error, mean_
 from math import sqrt
 from functools import partial
 
-
 import mlflow
 import mlflow.statsmodels
 import hyperopt
 from hyperopt import STATUS_OK, Trials, fmin, hp, tpe
+
+from ets_engine import extract_param_count_hwes, calculate_errors, exp_smoothing_bayesian
 
 plt.style.use('fivethirtyeight')
 
@@ -58,48 +59,6 @@ def splitting_data(data, split_date):
                         'KPB8_window_6_mean', 'KPB8_window_6_std'], axis=1)
 
     return X_train, y_train, X_test, y_test
-
-
-
-def extract_param_count_hwes(config):
-    return len(config['model'].keys()) + len(config['fit'].keys())
-
-def mape(y_true, y_pred):
-    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
-
-def aic(n, mse, param_count):
-    return n * np.log(mse) + 2 * param_count
-
-def bic(n, mse, param_count):
-    return n * np.log(mse) + param_count * np.log(n)
-
-def calculate_errors(y_true, y_pred, param_count):
-    # create a dictionary to store all of the metrics
-    error_scores = {}
-    pred_length = len(y_pred)
-    try: 
-        mse = mean_squared_error(y_true, y_pred)
-    except ValueError:
-        mse = 1e12
-    try:
-        error_scores['mae'] = mean_absolute_error(y_true, y_pred)
-    except ValueError:
-        error_scores['mae'] = 1e12
-    error_scores['mape'] = mape(y_true, y_pred)
-    error_scores['mse'] = mse
-    error_scores['rmse'] = sqrt(mse)
-    error_scores['aic'] = aic(pred_length, mse, param_count)
-    error_scores['bic'] = bic(pred_length, mse, param_count)
-    try:
-        error_scores['explained_var'] = explained_variance_score(y_true, y_pred)
-    except ValueError:
-        error_scores['explained_var'] = -1e4
-    try:
-        error_scores['r2'] = r2_score(y_true, y_pred)
-    except ValueError:
-        error_scores['r2'] = -1e4
-    
-    return error_scores
 
 def exp_smoothing_bayesian(train, test, selected_hp_values):
     output = {}

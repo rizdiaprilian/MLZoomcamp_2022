@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/83c583ef69fe4726b3a2380ed4b578db/artifacts
+deleted_time: 1673994742581
+end_time: 1673994611202
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 83c583ef69fe4726b3a2380ed4b578db
+run_name: funny-squirrel-130
+run_uuid: 83c583ef69fe4726b3a2380ed4b578db
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994611049
+status: 4
+tags: []
+user_id: rizdi

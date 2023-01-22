@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/6fce59b76b954e60985cc193dd4266cf/artifacts
+deleted_time: 1673994751381
+end_time: 1673994356309
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 6fce59b76b954e60985cc193dd4266cf
+run_name: sedate-hawk-879
+run_uuid: 6fce59b76b954e60985cc193dd4266cf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994353181
+status: 4
+tags: []
+user_id: rizdi

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/7421a8ff52dc4a2694c9c490eb8c5e60/artifacts
+end_time: 1674187154348
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: active
+run_id: 7421a8ff52dc4a2694c9c490eb8c5e60
+run_name: legendary-mink-100
+run_uuid: 7421a8ff52dc4a2694c9c490eb8c5e60
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1674187093182
+status: 3
+tags: []
+user_id: rizdi

@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/e68f2699fc6349d8ab7c9527b56f633d/artifacts
+deleted_time: 1673994045827
+end_time: 1673993955502
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: e68f2699fc6349d8ab7c9527b56f633d
+run_name: whimsical-horse-308
+run_uuid: e68f2699fc6349d8ab7c9527b56f633d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673993952263
+status: 4
+tags: []
+user_id: rizdi

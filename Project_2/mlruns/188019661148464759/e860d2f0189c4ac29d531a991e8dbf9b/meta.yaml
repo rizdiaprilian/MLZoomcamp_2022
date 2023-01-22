@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/e860d2f0189c4ac29d531a991e8dbf9b/artifacts
+deleted_time: 1673995081579
+end_time: 1673994874498
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: e860d2f0189c4ac29d531a991e8dbf9b
+run_name: righteous-kite-234
+run_uuid: e860d2f0189c4ac29d531a991e8dbf9b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994871266
+status: 4
+tags: []
+user_id: rizdi

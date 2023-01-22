@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/a262f085885d48009af30be9e7227dee/artifacts
+deleted_time: 1673994751369
+end_time: 1673994453035
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: a262f085885d48009af30be9e7227dee
+run_name: inquisitive-asp-430
+run_uuid: a262f085885d48009af30be9e7227dee
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994450381
+status: 4
+tags: []
+user_id: rizdi

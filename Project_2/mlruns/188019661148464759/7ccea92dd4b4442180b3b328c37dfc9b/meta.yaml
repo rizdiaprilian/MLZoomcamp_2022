@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/7ccea92dd4b4442180b3b328c37dfc9b/artifacts
+deleted_time: 1674401907411
+end_time: 1674401693716
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 7ccea92dd4b4442180b3b328c37dfc9b
+run_name: honorable-eel-431
+run_uuid: 7ccea92dd4b4442180b3b328c37dfc9b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1674401687897
+status: 4
+tags: []
+user_id: rizdi

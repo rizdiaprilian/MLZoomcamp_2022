@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/188019661148464759/6ed04181bfba49a294c316f458612570/artifacts
+deleted_time: 1673994742578
+end_time: 1673994623513
+entry_point_name: ''
+experiment_id: '188019661148464759'
+lifecycle_stage: deleted
+run_id: 6ed04181bfba49a294c316f458612570
+run_name: amazing-conch-942
+run_uuid: 6ed04181bfba49a294c316f458612570
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1673994623379
+status: 4
+tags: []
+user_id: rizdi
