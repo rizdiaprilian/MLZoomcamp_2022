@@ -36,11 +36,11 @@ Information about internet retail sales are available from portal [Office for Na
 
 ### Important Note about environment
 
-This project used three different environments, with most of parts were done in conda environment: 
+This project used three different environments, and progress of this project were entirely run in Windows local machine: 
 
-- a conda environment using python 3.10.8 for working on `EDA_and_feature_engineering.ipynb` and `Forecasting_internet_sales.ipynb` in local machine.
+- a conda environment using python 3.10.8 for working on `EDA_and_feature_engineering.ipynb` and `Forecasting_internet_sales.ipynb`.
 - a conda environment using python 3.9.15 for experimenting image deployment kubernetes in AWS remote.
-- a pipenv using python 3.10. for experimentation and hyperparameter tuning. Also taken place is building bentoml and deployment system 
+- a pipenv using python 3.10 for ML experiment management and hyperparameter tuning.  
 
 
 ### Experiment Results
@@ -69,7 +69,6 @@ Below shown a screening of MLFlow UI which successfully run in the browser:
 ![images](images/MLFlow2.png)
 
 ### Deployment 
-
 
 #### Streamlit Web App
 
