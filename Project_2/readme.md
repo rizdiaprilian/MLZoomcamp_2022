@@ -82,7 +82,7 @@ Steps of deploying `pred_app.py` to streamlit cloud:
 ![images](images/streamlit1.png)
 
 4. On advanced setting, just set python version.
-![images](images/streamlit1.png)
+![images](images/streamlit2.png)
 
 You can view the demonstration of forecasting with Streamlit here: https://rizdiaprilian-forecasting-app-pred-app-ueqjjl.streamlit.app/
 
