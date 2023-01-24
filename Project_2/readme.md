@@ -68,9 +68,21 @@ Below shown a screening of MLFlow UI which successfully run in the browser:
 
 ![images](images/MLFlow2.png)
 
-### Deployment 
 
 #### Streamlit Web App
+
+Steps of deploying `pred_app.py` to streamlit cloud:
+
+1) Login on page https://share.streamlit.io/. 
+2) Click "New app" then choose "from existing repo". Note: streamlit can only recognize repos from main branch.
+
+![images](images/streamlit.png)
+
+3) Select a repo of yours from github.
+![images](images/streamlit1.png)
+
+4. On advanced setting, just set python version.
+![images](images/streamlit1.png)
 
 You can view the demonstration of forecasting with Streamlit here: https://rizdiaprilian-forecasting-app-pred-app-ueqjjl.streamlit.app/
 
