@@ -4,13 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-scikit-learn = "==1.0.2"
+scikit-learn = "==1.1.1"
 flask = "*"
 gunicorn = "*"
 mlflow = "*"
 boto3 = "*"
-fastapi = "*"
 waitress = "*"
+uvicorn = "*"
+fastapi = "==0.78.0"
 
 [dev-packages]
 requests = "*"
