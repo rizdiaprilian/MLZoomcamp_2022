@@ -1,4 +1,4 @@
-# Flask app
+#### Flask app
 # FROM python:3.8.13-slim
 
 # RUN pip install pipenv
@@ -15,7 +15,7 @@
 
 # ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "predict_:app"]
 
-# FastAPI app
+#### FastAPI app
 FROM python:3.8.13-slim
 
 RUN pip install pipenv
@@ -26,8 +26,8 @@ COPY ["Pipfile", "Pipfile.lock", "./"]
 
 RUN pipenv install --system --deploy
 
-COPY ["predict_fa.py", "model_C=2.0.bin", "./"]
+COPY ["predict_fast_api.py", "model_C=2.0.bin", "./"]
 
 EXPOSE 8000
 
-CMD ["uvicorn", "predict_fa:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "predict_fast_api:app", "--host", "0.0.0.0", "--port", "8000"]
