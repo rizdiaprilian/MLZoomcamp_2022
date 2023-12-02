@@ -34,11 +34,9 @@ Breakdown structure of this course into two parts:
 - Bringing machine learning from notebooks to services and applications with Flask. 
 - Dependency management with pipenv.
 - Package Flask applications with machine learning models and their dependencies with Docker.
+- More interactive model serving with FastAPI.
 
 More to be updated soon.
 
 
-
-
-
-2023 Update: The section "Production with BentoML" has been removed from the source repository. However, you can explore my work utilizing BentoML on [this directory](https://github.com/rizdiaprilian/MLZoomcamp_2022/tree/master/07_Production_BentoML) 
+> 2023 Update: The section "Production with BentoML" has been removed from the source repository. However, you can explore my work utilizing BentoML on [this directory](https://github.com/rizdiaprilian/MLZoomcamp_2022/tree/master/07_Production_BentoML) 
