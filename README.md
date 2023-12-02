@@ -5,8 +5,7 @@ Breakdown structure of this course into two parts:
 - Machine learning algorithms: Linear Regression, Classification, Trees (Decision Tree and Ensembles such as Random Forest and XGBoost), and Deep Learning. Python, Scikit-learn, Keras and TensorFlow are main libraries in this development stage. 
 - Bringing machine learning into practical applications to solve problems in real-world scenarios with Flask, FastAPI, BentoML, Docker and Kubernetes. 
 
-### 2022 Timetable
-
+## 2022 Timetable
 #### Week1: Introduction of Machine Learning
 - Course introduction, history and evolution.
 - Basics of programming for ML (Python).
