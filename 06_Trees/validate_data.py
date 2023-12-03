@@ -1,14 +1,12 @@
 from pydantic import BaseModel, validator
 import pandera as pa
-from pandera.typing import Index, DataFrame, Series
-import datetime as dt
-from typing import List
-import json
+from pandera.typing import DataFrame, Series
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction import DictVectorizer
-from sklearn.metrics import roc_auc_score
+
 
 class DataSets(pa.DataFrameModel):
     seniority: Series[int]
