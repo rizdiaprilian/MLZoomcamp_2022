@@ -1,0 +1,12 @@
+name: Accessing value from Secrets from Github Action
+
+on: push
+
+jobs:
+  my-first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: sending an echo hello-world
+        run: |
+          echo "hello world this is action"
