@@ -3,15 +3,13 @@ name: Accessing value from Secrets from Github Action
 on: push
 
 jobs:
-  secrets:
+  my-first-job:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        import os
-        print(len(os.getenv('MY_VAR')))
-      shell: python
-      env:
-        MY_VAR: ${{ secrets.CI_CD_SECRET }}
+      - uses: actions/checkout@v3
+      - name: sending an echo hello-world
+        run: |
+          echo "hello world this is action"
 
 # on:
 #   push:
