@@ -1,0 +1,35 @@
+name: Accessing value from Secrets from Github Action
+
+on: push
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        import os
+        print(len(os.getenv('MY_VAR')))
+      shell: python
+      env:
+        MY_VAR: ${{ secrets.CI_CD_SECRET }}
+
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Set up Python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: '3.x'
+#     - name: Install dependencies
+#       run: pip install -r requirements.txt
+#     - name: Run tests
+#       run: pytest
